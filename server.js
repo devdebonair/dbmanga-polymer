@@ -23,7 +23,6 @@ app.use(function(req, res, next) {
     {
         next();
     }
-    
 }); 
 app.use( express.static(__dirname + '/public') );
 app.use( '/lib', express.static(__dirname + '/public/static') );
@@ -62,6 +61,7 @@ http.listen( config.env.port, function(){
     console.log('Listening to port:\t%s', config.env.port );
 });
 
-app.get('/', function(req, res){
+app.get('/*', function(req, res){
     res.sendFile(__dirname + '/public/views/park.html');
 });
+
