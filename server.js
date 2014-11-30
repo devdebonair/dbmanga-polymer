@@ -13,6 +13,13 @@ var config = require("./config");
 
 //Configure Express
 console.log('Configuring Express....');
+app.use(function(req, res, next) { 
+    if(req.headers.host === 'dbmanga.com') 
+    { 
+        res.writeHead(303, {'Location': 'http://www.dbmanga.com' + req.url});
+        res.end();
+    } 
+}); 
 app.use( express.static(__dirname + '/public') );
 app.use( '/lib', express.static(__dirname + '/public/static') );
 app.set( 'views', __dirname + '/public/views/' );
@@ -50,6 +57,7 @@ http.listen( config.env.port, function(){
     console.log('Listening to port:\t%s', config.env.port );
 });
 
-app.get('/', function(req, res){
+app.get('/*', function(req, res){
     res.sendFile(__dirname + '/public/views/park.html');
 });
+
