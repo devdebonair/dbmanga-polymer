@@ -16,7 +16,7 @@ console.log('Configuring Express....');
 app.use(function(req, res, next) { 
     if(req.headers.host === 'dbmanga.com') 
     { 
-        res.writeHead(303, {'Location': 'http://www.dbmanga.com/' + req.url});
+        res.writeHead(303, {'Location': 'http://www.dbmanga.com' + req.url});
         res.end();
     }
     else
