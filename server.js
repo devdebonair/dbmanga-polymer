@@ -23,10 +23,6 @@ app.use(function(req, res, next) {
     {
         next();
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> f68b82848485dd29ccb35eb851d5f3749e80a271
 }); 
 app.use( express.static(__dirname + '/public') );
 app.use( '/lib', express.static(__dirname + '/public/static') );
