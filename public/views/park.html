@@ -12,7 +12,6 @@
 
         <style type="text/css">
             html { 
-              background: url(/images/surprised.gif) no-repeat center center fixed; 
               -webkit-background-size: cover;
               -moz-background-size: cover;
               -o-background-size: cover;
@@ -33,7 +32,7 @@
             .overlay{
                 top: 0px;
                 left: 0px;
-                opacity: 0.9;
+                opacity: 0.8;
                 background-color: black;
                 position: absolute;
             }
@@ -58,5 +57,13 @@
                 <h4 class="header text-center">~Debonair Manga</h1>
             </div>
         </div>
+        
+        <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var images = ['boy-on-bench.gif', 'surprised.gif', 'kakashi-wave.gif', 'sleep-on-book.gif', 'girl-about-to-cry.gif'];
+                $('html').css({'background-image': 'url(images/animated/' + images[Math.floor(Math.random() * images.length)] + ')'});
+            });
+        </script>
     </body>
 </html>
