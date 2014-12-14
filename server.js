@@ -45,18 +45,22 @@ app.use( passport.session() );
 app.use( methodOverride() );
 
 //Initialize Passport
-console.log('Checking Passport...');
-require("./passport")(passport);
+// console.log('Checking Passport...');
+// require("./passport")(passport);
 
 //Initialize Routes
-console.log('Establishing Routes....');
-require("./routes")(app, passport);
+// console.log('Establishing Routes....');
+// require("./routes")(app, passport);
 
 //Initialize database
-console.log('Connecting to Database....');
-require("./database/db");
+// console.log('Connecting to Database....');
+// require("./database/db");
 
 console.log('Starting Server....');
 http.listen( config.env.port, function(){
     console.log('Listening to port:\t%s', config.env.port );
+});
+
+app.get('/', function(req, res){
+    res.sendFile(__dirname + '/public/lib/Oleose/Freeze/index.html');
 });
