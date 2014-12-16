@@ -1,9 +1,414 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
-    </head>
-    <body>
-        
-    </body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Debonair Manga</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Debonair Manga is the best online manga reader available.">
+    <meta name="author" content="Vincent Moore">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- Font Awesome -->
+	<link href="/lib/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Pace -->
+	<link href="/lib/endless/css/pace.css" rel="stylesheet">
+	
+	<!-- Endless -->
+	<link href="/lib/endless/css/endless.min.css" rel="stylesheet">
+	<link href="/lib/endless/css/endless-landing.min.css" rel="stylesheet">
+
+  </head>
+
+  <body class="overflow-hidden">
+	<!-- Overlay Div -->
+	<div id="overlay" class="transparent"></div>
+
+	<div id="wrapper" class="preload">
+		<header class="navbar navbar-fixed-top bg-white">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="#" class="navbar-brand"><span class="text-danger">Debonair</span> Manga</a>
+				</div>
+				<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#landing-content" class="top-link">Home</a>
+						</li>
+						<li>
+							<a href="#feature" class="top-link">Features</a>
+						</li>
+						<li>
+							<a href="#portfolio" class="top-link">Screenshots</a>
+						</li>
+						<li>
+							<a href="#contact" class="top-link">Contact us</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		
+		<div id="landing-content">
+			<div id="main-slider" class="carousel slide bg-dark" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#main-slider" data-slide-to="0" class="active"></li>
+					<li data-target="#main-slider" data-slide-to="1"></li>
+					<li data-target="#main-slider" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="/lib/endless/img/gallery1.jpg" alt="" class="img-background">
+						<div class="row">
+							<div class="col-md-6 text-right">
+								<h2 class="m-top-lg m-right-md text-white fadeInDownLarge animation-delay3">The #1 Manga Experience</h2>
+								<p class="text-white fadeInUpLarge animation-delay6 m-right-md hidden-xs">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
+									Vestibulum auctor suscipit lobortis.
+								</p>
+								<a href="index.html" class="btn btn-default btn-lg fadeInLeftLarge animation-delay8 m-bottom-lg m-right-md">Find Out More</a>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<img src="/lib/endless/img/gallery10.jpg" alt="" class="img-background">
+						<div class="row">
+							<div class="col-xs-6 text-right">
+								<img src="img/responsive.png" alt="responsive" class="fadeInLeftLarge animation-delay6 m-top-lg m-bottom-lg">
+							</div>
+							<div class="col-xs-6">
+								<h2 class="m-top-lg text-white fadeInDownLarge animation-delay3">Fully Responsive Design</h2>
+								<p class="text-white fadeInUpLarge animation-delay6 hidden-xs">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
+									Vestibulum auctor suscipit lobortis.
+								</p>
+								<a href="http://www.dbmanga.com/" class="btn btn-danger btn-lg fadeInRightLarge animation-delay8">Live Preview <i class="fa fa-arrow-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<img src="/lib/endless/img/gallery14.jpg" alt="" class="img-background">
+						<div class="row text-center">
+							<h2 class="m-top-lg text-warning fadeInDownLarge animation-delay3">Debonair Manga</h2>
+							<p class="text-white fadeInUpLarge animation-delay6 hidden-xs">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
+								Vestibulum auctor suscipit lobortis.
+							</p>
+							<a href="#" class="btn btn-default btn-lg fadeInLeftLarge animation-delay8">Get It Now</a>
+							<a href="index.html" class="btn btn-danger btn-lg fadeInRightLarge animation-delay8">Find Out More</a>	
+						</div>
+					</div>
+				</div>
+				<a class="left carousel-control" href="#main-slider" data-slide="prev">
+					<span class="fa fa-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#main-slider" data-slide="next">
+					<span class="fa fa-chevron-right"></span>
+				</a>
+			</div>
+			
+			<div class="bg-white content-padding text-center font-lg">
+				<div class="container">
+					<span class="m-right-sm">DEBONAIR MANGA IS THE NUMBER ONE MANGA EXPERIENCE AVAILABLE</span>
+					<div class="inline-block m-top-sm">
+						<a href="http://www.dbmanga.com" class="btn btn-danger btn-lg m-bottom-sm fadeInRightLarge animation-delay2">LIVE PREVIEW <i class="fa fa-arrow-right"></i></a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="bg-light padding-md" id="feature">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4 content-padding">
+							<div class="feature-icon text-center ">
+								<i class="fa fa-book fa-4x"></i>
+							</div>
+							<div class="text-center font-lg">
+								<h3>10,000+ Manga Titles</h3>
+							</div>
+							<p>We have an extensive database filled with over 10,000 different manga titles. These titles are updated regularly and will all be available for free. All it takes is a simple request by you to add a title.</p>
+						</div><!-- /.col -->
+						<div class="col-sm-4 content-padding">
+							<div class="feature-icon text-center">
+								<i class="fa fa-youtube-play fa-4x"></i>
+							</div>
+							<div class="text-center font-lg">
+								<h3>Video Reviews</h3>
+							</div>
+							<p>We are currently working on a system to integrate video reviews into the manga experience. Series and chapter reviews will be aggretated for your benefit. Share your experience and watch how others react to the chapter you just read.</p>
+						</div><!-- /.col -->
+						<div class="col-sm-4 content-padding">
+							<div class="feature-icon text-center">
+								<i class="fa fa-comments fa-4x"></i>
+							</div>
+							<div class="text-center font-lg">
+								<h3>Interactive</h3>
+							</div>
+							<p>Interactive comments will be available for each page you read. One word reactions from different users will keep your experience social but discrete. Check out everyone's reaction to that draw dropping moment in your favorite manga title.</p>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div>
+			</div>
+			
+			<div class="padding-md">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4 content-padding">
+							<div class="feature-icon text-center">
+								<i class="fa fa-tablet fa-4x"></i>
+							</div>
+							<div class="text-center font-lg">
+								<h3>Responsive Design</h3>
+							</div>
+							<p>Although plans for iOS, Windows, and Android apps are on our roadmap, our site will be fully responsive and accessible to mobile devices. You will have the same experience on and off the browser. Perfect for on the go reading.</p>
+						</div><!-- /.col -->
+						<div class="col-sm-4 content-padding">
+							<div class="feature-icon text-center">
+								<i class="fa fa-cloud-download fa-4x"></i>
+							</div>
+							<div class="text-center font-lg">
+								<h3>Stay in Sync</h3>
+							</div>
+							<p>Once released, your account will be in sync with all of your devices. From the browser, save manga titles to your library and have them available for offline viewing on your phone or tablet.</p>
+						</div><!-- /.col -->
+						<div class="col-sm-4 content-padding">
+							<div class="feature-icon text-center">
+								<i class="fa fa-road fa-4x"></i>
+							</div>
+							<div class="text-center font-lg">
+								<h3>Extensive Roadmap</h3>
+							</div>
+							<p>Our team is creative and eager to provide the best experience possible. We listen to our users and speak with them directly about the features and changes they would like to see. Add on to our list of features.</p>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div>
+			</div>
+			<div class="bg-white text-center content-padding">
+				<div class="container">
+					<h3>Our Mission</h3>
+					<h5 class="text-muted">Responsive and Interactive Manga Experience</h5>
+					<div class="seperator"></div>
+					<div class="seperator"></div>
+					<p>
+						Anime has become very influential in the West because of hit animes like Naruto, One Piece,
+and Attack on Titan. With that attraction, came manga, the originator of most animes.
+Most manga do not get translated to english, leaving a void for scanlation aggregators like MangaPanda
+to take advantage of. This causes a huge problem because this is considered piracy of copyrighted material.
+There is a legal gray area because most manga do not make it to the West which do not affect sales in Japan.
+The problem is that aggregators lack presentation and feature. Websites are layed out to take advantage of 
+ad revenue as opposed to make it easier and convenient for the consumer. We want to fill that void. Not only that, but we
+want to push scanlations out of that legal gray area. Crunchyroll, Viz Media, and other content providers have attempted
+to solve the issue but have either relied on old tactics to sell volumes, or have simply denied focus on manga.
+We are here to provide the features that consumers want. We are here to focus on manga. We are here to make scanlations
+legal and boost the sales of related content providers. Debonair Manga has a creative team, a streamlined focus, young ambition,
+and a big roadmap. Help us help you.
+					</p>
+					<div class="seperator"></div>
+					<a href="http://www.dbmanga.com" class="btn btn-lg btn-success animated-element fadeInUp no-animation">Live Preview</a>
+					<hr/>
+					
+					<img src="/lib/endless/img/screenshot.jpg" alt="" class="fadeInRightLarge no-animation animated-element m-top-md animation-delay1">
+					
+				</div>
+			</div>
+			
+			<div id="portfolio">
+				<div class="section-header">
+					<hr class="left visible-lg">
+					<span>
+						Screenshots
+					</span>
+					<hr class="right visible-lg">
+				</div>
+			
+				<div class="container">
+					<div class="row recent-work">
+						<div class="col-sm-3">		
+							<div class="detail fadeInUp animated-element no-animation">
+								<a href="#" class="hoverBorder">
+									<span class="hoverBorderWrapper">
+										<img src="/lib/endless/img/gallery2.jpg" alt="portfolio">
+										<span class="hoverBorderInner"></span>
+										<span class="readMore">+ Read more</span>
+									</span>	
+								</a>
+								<div class="seperator"></div>
+								<p>
+									<h4>Responsive Design</h4>
+									<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.</small> 
+								<p>
+							</div><!--detail-->
+						</div><!--col-->
+						<div class="col-sm-3">
+							<div class="detail fadeInUp animated-element no-animation animation-delay2">
+								<a href="#" class="hoverBorder">
+									<span class="hoverBorderWrapper">
+										<img src="/lib/endless/img/gallery8.jpg" alt="portfolio">
+										<span class="hoverBorderInner"></span>
+										<span class="readMore">+ Read more</span>
+									</span>	
+								</a>
+								<div class="seperator"></div>
+								<p>
+									<h4>Manga Related News</h4>
+									<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.</small> 
+								<p>
+							</div><!--detail-->
+						</div><!--col-->
+						<div class="col-sm-3">
+							<div class="detail fadeInUp animated-element no-animation animation-delay4">
+								<a href="#" class="hoverBorder">
+									<span class="hoverBorderWrapper">
+										<img src="/lib/endless/img/gallery12.jpg" alt="portfolio">
+										<span class="hoverBorderInner"></span>
+										<span class="readMore">+ Read more</span>
+									</span>	
+								</a>
+								<div class="seperator"></div>
+								<p>
+									<h4>Interactive Comments</h4>
+									<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.</small> 
+								<p>
+							</div><!--detail-->
+						</div><!--col-->
+						<div class="col-sm-3">
+							<div class="detail fadeInUp animated-element no-animation animation-delay6">
+								<a href="#" class="hoverBorder">
+									<span class="hoverBorderWrapper">
+										<img src="/lib/endless/img/gallery14.jpg" alt="portfolio">
+										<span class="hoverBorderInner"></span>
+										<span class="readMore">+ Read more</span>
+									</span>	
+								</a>
+								<div class="seperator"></div>
+								<p>
+									<h4>Video Reviews</h4>
+									<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.</small> 
+								<p>
+							</div><!--detail-->
+						</div><!--col-->
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="bg-white">
+				<div class="text-center content-padding" id="contact">
+					<div class="container">
+						<h3>NEWSLETTER SIGNUP</h3>
+						<p class="m-bottom-md">Signup for out newsletter to know when we release.</p>
+						
+						<form class="form-inline content-padding">
+							<div class="form-group">
+								<label class="sr-only">Email address</label>
+								<input type="text" class="form-control input-lg" placeholder="Email Address" id="newsletter">
+							</div>
+							<a href="#" class="btn btn-lg btn-info">Subscribe</a>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="content-padding bg-light">
+				<div class="container">
+					<div class="panel">
+						<div class="panel-body content-padding">
+							<div class="pull-left">
+								<p class="font-lg">Debonair Manga is a dedicated manga platform.</p>
+								<p class="text-muted">Live preview available now. This is only beta the and is not the final product.</p>
+							</div>
+							<a href="#" class="btn btn-lg btn-danger pull-right m-top-xs fadeInLeftLarge no-animation animated-element animation-delay1">Live Preview</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- /landing-content -->
+		
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 padding-md">
+						<p class="font-lg">About Our Company</p>
+						<p><small>Debonair Manga is owned and copyrighted under DevDebonair. Our goal at Debonair Manga is to provide a professional platform to turn scanlations into something positive and support the manga community as a whole.</small></p>
+					</div><!-- /.col -->
+					<div class="col-xs-6 col-sm-4 padding-md">
+						<p class="font-lg">Stay Connected</p>
+						<a href="http://www.facebook.com/DebonairManga" target="_blank" class="social-connect tooltip-test facebook-hover pull-left m-right-xs" data-toggle="tooltip" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+						<a href="http://www.twitter.com/DebonairManga" target="_blank" class="social-connect tooltip-test twitter-hover pull-left m-right-xs" data-toggle="tooltip" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+						<a href="http://debonairmanga.tumblr.com/DebonairManga" target="_blank" class="social-connect tooltip-test tumblr-hover pull-left m-right-xs" data-toggle="tooltip" data-original-title="Tumblr"><i class="fa fa-tumblr"></i></a>
+						<a href="http://www.pinterest.com/DebonairManga" target="_blank" class="social-connect tooltip-test pinterest-hover pull-left" data-toggle="tooltip" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a>
+					</div><!-- /.col -->
+					<div class="col-xs-6 col-sm-4 padding-md">
+						<p class="font-lg">Contact Us</p>
+						<div class="seperator"></div>
+						<a class="btn btn-info"><i class="fa fa-envelope"></i> Contact support</a>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div>
+		</footer>
+	</div><!-- /wrapper -->
+
+	<a href="" id="scroll-to-top" class="hidden-print bg-danger"><i class="fa fa-chevron-up"></i></a>
+	
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	
+	<!-- Jquery -->
+	<script src="/lib/endless/js/jquery-1.10.2.min.js"></script>
+	
+	<!-- Bootstrap -->
+    <script src="/lib/endless/bootstrap/js/bootstrap.min.js"></script>
+   
+	<!-- Waypoint -->
+	<script src='/lib/endless/js/waypoints.min.js'></script>
+	
+	<!-- LocalScroll -->
+	<script src='/lib/endless/js/jquery.localscroll.min.js'></script>
+	
+	<!-- ScrollTo -->
+	<script src='/lib/endless/js/jquery.scrollTo.min.js'></script>
+	
+	<!-- Modernizr -->
+	<script src='/lib/endless/js/modernizr.min.js'></script>
+	
+	<!-- Pace -->
+	<script src='/lib/endless/js/pace.min.js'></script>
+	
+	<!-- Popup Overlay -->
+	<script src='/lib/endless/js/jquery.popupoverlay.min.js'></script>
+	
+	<!-- Slimscroll -->
+	<script src='/lib/endless/js/jquery.slimscroll.min.js'></script>
+	
+	<!-- Cookie -->
+	<script src='/lib/endless/js/jquery.cookie.min.js'></script>
+
+	<!-- Endless -->
+	<script src="/lib/endless/js/endless/endless.js"></script>
+	
+	<script>
+		$(function()	{
+			$('.animated-element').waypoint(function() {
+				
+				$(this).removeClass('no-animation');
+				
+			}, { offset: '70%' });
+			
+			$('.nav').localScroll({duration:800});
+		});
+	</script>
+	
+  </body>
 </html>
