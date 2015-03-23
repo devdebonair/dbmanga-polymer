@@ -6,7 +6,6 @@ module.exports = function(router, passport, manga, user)
             
             res.render('partials/home', {
                 user: req.user,
-                layout: 'layout', 
                 meta:{ 
                     title: 'Debonair Manga - Responsive Online Manga Reader', 
                     description: 'Read Naruto, One Piece, Attack on Titan and many more manga on the best manga reading platform for free.',
