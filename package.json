@@ -15,8 +15,6 @@
       "passport": "0.2.1",
       "passport-local": "1.0.0",
       "express-state": "1.2.0",
-      "ejs": "1.0.0",
-      "express-ejs-layouts": "1.1.0",
       "connect-mongo": "0.5.3",
       "mailchimp": "1.1.0"
   },
