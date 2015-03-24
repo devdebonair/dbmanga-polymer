@@ -1,0 +1,21 @@
+#manga {
+    padding: 0px 25px;
+}
+#manga-stats i {
+    opacity: 0.6;
+}
+
+#manga-chapter-list li {
+    width: 100%;
+}
+
+#manga-chapter-list a {
+    text-align: center;
+}
+
+#manga-chapter-list-activator {
+    position: fixed;
+    right: 55px;
+    top: 20;
+    z-index: 99;
+}

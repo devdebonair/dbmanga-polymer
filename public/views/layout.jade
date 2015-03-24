@@ -1,0 +1,44 @@
+doctype html
+
+html(lang="en")
+    head
+        title Debonair Manga
+        meta(keywords="a bunch of keywords")
+        meta(name="description", content="this is my description")
+        meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=yes")
+        
+        link(rel="stylesheet", href="/lib/materialize/dist/css/materialize.min.css" type="text/css")
+        link(rel="stylesheet", href="/lib/fontawesome/css/font-awesome.min.css" type="text/css")
+        link(rel="stylesheet", href="/css/layout.css" type="text/css")
+        link(rel="stylesheet", href="/css/menu.css" type="text/css")
+        
+        block head
+        
+        body
+            #banner
+                include menu.jade
+                
+                section.full-width
+                    a(id="menu-button" href="#" data-activates="slide-out" class="button-collapse fake-link")
+                        i(class="mdi-navigation-menu small red-text text-lighten-2")
+                    i(id="search-button" class="mdi-action-search small red-text text-lighten-2 fake-link hide-on-small-only")
+                
+                a(href="/home")
+                    h3(id="header" class="letter-space center-align red-text text-lighten-1") DEBONAIR MANGA
+                    
+                section(class="hide-on-small-only container")
+                    
+                    form(method="GET" class="no-display" action="/search")
+                        div(class="input-field col s12")
+                            input#search
+                            label(for="search") Manga, Author, Genre
+            
+            #main.row.full
+                div(class="col s12 m12 l12")
+                    block content
+                    
+            script(src="/lib/jquery/dist/jquery.min.js" type="text/javascript")
+            script(src="/lib/materialize/dist/js/materialize.min.js" type="text/javascript")
+            script(src="/js/search.js" type="text/javascript")
+            
+            block scripts

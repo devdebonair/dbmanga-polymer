@@ -1,0 +1,12 @@
+#filter {
+    text-align: center;
+    color: #9e9e9e;
+}
+
+#filter h1, h2, h3, h4, h5 {
+    color: #ef5350;
+}
+
+#filter li {
+    cursor: pointer;
+}

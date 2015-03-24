@@ -1,0 +1,35 @@
+html, body, #main {
+    max-height: 1024px;
+    max-width: 1980px;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#pages img {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+#reader-controls {
+    position: fixed;
+    z-index: 99;
+    margin-top: 10%;
+}
+
+#reader-controls i {
+    display: block;
+    opacity: 0.2;
+    padding: 15px;
+    cursor: pointer;
+    
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+#reader-controls i:hover {
+    opacity: 1.0;
+}

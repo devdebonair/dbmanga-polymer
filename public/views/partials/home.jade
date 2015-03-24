@@ -1,0 +1,67 @@
+extends ../layout.jade
+
+block head
+    link(href="/lib/slick.js/slick/slick.css" ref="stylesheet" type="text/css")
+
+block scripts
+    script(src="/js/home.js" type="text/javascript")
+    
+block content
+    #featured.row
+        div(class="col s12 m12 l9")
+            .card
+                .card-content
+                    h5(class="center-align red-text text-lighten-2 letter-space") FEATURED
+                    hr(color="#f2f2f2")
+                    .row
+                        div(class="col m4")
+                            img(class="full-width" style="padding-top: 20px" src="http://img4.wikia.nocookie.net/__cb20110813093750/naruto/pl/images/e/ee/Tom_56_Ok%C5%82adka.jpg")
+                        div(class="col m8 hide-on-small-only")
+                            h5.letter-space NARUTO
+                            p Before Naruto's birth, a great demon fox had attacked the Hidden Leaf Village. A man known as the 4th Hokage sealed the demon inside the newly born Naruto, causing him to unknowingly grow up detested by his fellow villagers. Despite his lack of talent in many areas of ninjutsu, Naruto strives for only one goal: to gain the title of Hokage, the strongest ninja in his village. Desiring the respect he never received, Naruto works toward his dream with fellow friends Sasuke and Sakura and mentor Kakashi as they go through many trials and battles that come with being a ninja.
+                            h5(class="red-text text-lighten-2 center-align letter-space") PREVIEW
+                            hr(color="#f2f2f2")
+                            div(class="col m3")
+                                img(class="responsive-img materialboxed" src="http://2.bp.blogspot.com/-1ZKakzKlcBw/VFwv43fBsfI/AAAAAAAAT3I/3Pu_UuorxcM/004.jpg?imgmax=3000")
+                            div(class="col m3")
+                                img(class="responsive-img materialboxed" src="http://2.bp.blogspot.com/-hcgOWGiwiRo/VFwwAnPAXaI/AAAAAAAAT3Q/AMspWpcc99k/005.jpg?imgmax=3000")
+                            div(class="col m3")
+                                img(class="responsive-img materialboxed" src="http://2.bp.blogspot.com/-DRLKqJY3TG8/VFwwI0raLBI/AAAAAAAAT3Y/qMVQ8xzKjbk/006.jpg?imgmax=3000")
+                            div(class="col m3")
+                                img(class="responsive-img materialboxed" src="http://2.bp.blogspot.com/-PO6S3KMuGKs/VFwwR6afM0I/AAAAAAAAT3g/-qyTxt4EVAY/007.jpg?imgmax=3000")
+    
+        div(class="col m12 l3 hide-on-small-only")
+            .row
+                .card(class="blue-grey col m3 l12")
+                    .card-content(class="white-text")
+                        p.center-align Do you recommend "Naruto" to other readers?
+                    .card-action(class="center-align")
+                        a.letter-space(href="#") Yes
+                        a.letter-space(href="#") No
+                        
+                .card(class="red lighten-2 col m3 l12")
+                    .card-content(class="white-text")
+                        p.center-align Would you like to share Naruto with others?
+                    .card-action(class="center-align white-text")
+                        div
+                            a(href="#")
+                                i(class="fa fa-facebook")
+                            a(href="#")
+                                i(class="fa fa-twitter")
+                            a(href="#")
+                                i(class="fa fa-pinterest")
+                            a(href="#")
+                                i(class="fa fa-tumblr")
+                            
+                        
+                .card(class="blue-grey col m3 l12")
+                    .card-content(class="white-text")
+                        p.center-align Do you recommend "Naruto" to other readers?
+                    .card-action(class="center-align")
+                        a.letter-space(href="#") Yes
+                        a.letter-space(href="#") No
+                        
+    #article
+        div
+            h5(class="red-text text-lighten-2 letter-space center-align") ARTICLES
+            hr(color="#f2f2f2")
