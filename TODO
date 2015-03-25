@@ -1,0 +1,40 @@
+HOME
+============
+- Add captions to carousel
+
+
+Reader
+============
+- Single/Dual change stay on same page
+- Load chapter list //mmenu
+
+Browse
+============
+- Finish mobile query build
+- Add searchbar filter
+- Add sort filter - date, popularity, numberOfChapters
+
+
+Manga
+============
+- Find place to add author
+- link genres to browse
+
+
+Database
+===========
+- Fix url's in database that has extra quotation mark
+
+Search
+===========
+- suggestions
+- link to browse if manga is not found
+
+Research
+===========
+- Image optimization
+- Grunt build - minify js css
+- Cheap, organized image-store solution
+
+Bugs
+==========
