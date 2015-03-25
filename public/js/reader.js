@@ -1,148 +1,16 @@
-var chapter = [
-        {
-            number: 1,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/001.png'
-        },
-        {
-            number: 2,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/002.png',
-        },
-        {
-            number: 3,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/003.png',
-        },
-        {
-            number: 4,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/004.png',
-        },
-        {
-            number: 5,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/005.png',
-        },
-        {
-            number: 6,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/006.png',
-        },
-        {
-            number: 7,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/007.png',
-        },
-        {
-            number: 8,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/008.png',
-        },
-        {
-            number: 9,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/009.png',
-        },
-        {
-            number: 10,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/010.png',
-        },
-        {
-            number: 11,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/011.png',
-        },
-        {
-            number: 12,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/012.png',
-        },
-        {
-            number: 13,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/013.png',
-        },
-        {
-            number: 14,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/014.png',
-        },
-        {
-            number: 15,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/015.png',
-        },
-        {
-            number: 16,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/016.png',
-        },
-        {
-            number: 17,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/017.png',
-        },
-        {
-            number: 18,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/018.png',
-        },
-        {
-            number: 19,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/019.png',
-        },
-        {
-            number: 20,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/020.png',
-        },
-        {
-            number: 21,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/021.png',
-        },
-        {
-            number: 22,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/022.png',
-        },
-        {
-            number: 23,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/023.png',
-        },
-        {
-            number: 24,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/024.png',
-        },
-        {
-            number: 25,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/025.png',
-        },
-        {
-            number: 26,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/026.png',
-        },
-        {
-            number: 27,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/027.png',
-        },
-        {
-            number: 28,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/028.png',
-        },
-        {
-            number: 29,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/029.png',
-        },
-        {
-            number: 30,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/030.png',
-        },
-        {
-            number: 31,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/031.png',
-        },
-        {
-            number: 32,
-            image: 'http://img.mangastream.com/cdn/manga/102/2705/032.png',
-        }
-    ];
-
 var isDual = false;
 var isLighted = true;
 var isSlide = true;
 var isScreenHeight = true;
 
 buildSingleBook();
-
 function buildSingleBook(height)
 {
     this.height = height || $(window).height();
     
-    for(var i = 0; i < chapter.length; i++)
+    for(var i = 0; i < chapter.pages.length; i++)
     {
-        $('#pages').append('<div class="center-align"><img src="'+ chapter[i].image +'"></img></div>');
+        $('#pages').append('<div class="center-align"><img src="'+ chapter.pages[i].image +'"></img></div>');
     }
     
     $('#pages img').height(this.height);
@@ -160,27 +28,28 @@ function buildSingleBook(height)
 function buildDualBook(height)
 {
     this.height = height || $(window).height();
-    for(var i = 0; i < chapter.length; i++)
+    for(var i = 0; i < chapter.pages.length; i++)
     {
-        var toAppend = '<div class="center-align"><img src="'+ chapter[i].image +'"></img>';
-        
+        var toAppend = '<div class="center-align"><img src="'+ chapter.pages[i].image +'"></img>';
+        console.log(chapter.pages[i].image);
         //If another page exists
-        if(i+1 < chapter.length)
+        if(i+1 < chapter.pages.length)
         {
             var image1 = new Image();
-            image1.src = chapter[i].image;
+            image1.src = chapter.pages[i].image;
             
             var image2 = new Image();
-            image2.src = chapter[i+1].image;
+            image2.src = chapter.pages[i+1].image;
             
             if( (image1.naturalWidth/image1.naturalHeight) < 0.8 && (image2.naturalWidth/image2.naturalHeight) < 0.8)
             {
-                toAppend += '<img src="'+ chapter[i+1].image +'"></img>';
+                toAppend += '<img src="'+ chapter.pages[i+1].image +'"></img>';
                 i++;
             }
         }
         
-        toAppend += '</div>'
+        toAppend += '</div>';
+        console.log(toAppend);
         $('#pages').append(toAppend);
     }
     
@@ -302,7 +171,7 @@ $('#control-zoom-toggle').click(function(){
     {
         $(this).removeClass('fa-search-minus');
         $(this).addClass('fa-search-plus');
-        return
+        return;
     }
     $(this).removeClass('fa-search-plus');
     $(this).addClass('fa-search-minus');

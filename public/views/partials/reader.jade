@@ -7,6 +7,8 @@ block head
 
 block scripts
     script(src="/lib/slick.js/slick/slick.min.js" type="text/javascript")
+    script.
+        chapter = !{JSON.stringify(chapter)}
     script(src="/js/reader.js" type="text/javascript")
 
 block content
@@ -17,5 +19,7 @@ block content
         i#control-zoom-toggle(class="tooltipped fa fa-search-plus fa-2x" data-position="right" data-delay="50" data-tooltip="In/Out Zoom")
         i#control-slide-toggle(class="tooltipped fa fa-arrows-v fa-2x" data-position="right" data-delay="50" data-tooltip="Horizontal/Vertical View")
         i#control-expand(class="tooltipped fa fa-expand fa-2x" data-position="right" data-delay="50" data-tooltip="Fullscreen")
+        a(href="/manga/#{title.replace(/ /g,'_')}" style="color: black")
+            i#control-expand(class="tooltipped fa fa-arrow-left fa-2x" data-position="right" data-delay="50" data-tooltip="Back to Manga Page")
         
     #pages.full

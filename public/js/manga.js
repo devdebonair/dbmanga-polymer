@@ -20,15 +20,5 @@ $(function(){
        "classes": "mm-white"
     });
     
-    $.get('/api/v1/manga/'+ manga._id +'/chapters/1', function(data){
-        for(var i = 0; i < 4; i++)
-        {
-            $('#manga-preview').append(
-                '<div class="col s12 m6 l3">' +
-                    '<img class="responsive-img materialboxed" src="'+ data.pages[i].image +'"></img>' +
-                '</div>'
-            );
-        }
-        $('.materialboxed').materialbox();
-    });
+    $('.materialboxed').materialbox();
 });
