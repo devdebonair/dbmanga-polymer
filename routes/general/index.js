@@ -2,6 +2,7 @@ var fs = require("fs");
 var router = require("express").Router();
 var manga = require("../../database/models/ModelManga");
 var user = require("../../database/models/ModelUser");
+var article = require("../../database/models/ModelArticle");
 
 module.exports = function(app, passport)
 {
@@ -13,7 +14,7 @@ module.exports = function(app, passport)
         {
             return;    
         }
-        require("./" + file)(router, passport, manga, user);
+        require("./" + file)(router, passport, manga, user, article);
     });
     
     app.use('/', router);
