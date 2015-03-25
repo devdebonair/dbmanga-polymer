@@ -4,6 +4,10 @@ var Manga = new Schema({
     title: {type: String, lowercase: true, trim: true},
     description: { type: String, required: true },
     coverUrl: { type: String, required: true },
+    cover: {
+        portrait: { type: String, required: true },
+        landscape: { type: String, required: false }  
+    },
     author: { type: String, required: true },
     likes: { type: Number, required: true, default: 0 },
     artist: String,
@@ -62,6 +66,19 @@ Manga.statics.findPopular = function(limit, callback)
     });
 };
 
+Manga.virtual('preview').get(function(){
+    var sortedChapters = this.chapters.sort(function(a,b){
+        return a.number - b.number;
+    });
+    
+    var selectedChapter = sortedChapters[0];
+    
+    var sortedPages = selectedChapter.pages.sort(function(a,b){
+        return a.number - b.number;
+    });
+    
+    return sortedPages.slice(0,4);
+});
 
 Manga.statics.findTrending = function(limit, callback)
 {
