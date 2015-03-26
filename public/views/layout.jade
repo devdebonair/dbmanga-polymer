@@ -23,7 +23,7 @@ html(lang="en")
                         i(class="mdi-navigation-menu small red-text text-lighten-2")
                     i(id="search-button" class="mdi-action-search small red-text text-lighten-2 fake-link hide-on-small-only")
                 
-                a(href="/home")
+                a(href="/")
                     h3(id="header" class="letter-space center-align red-text text-lighten-1") DEBONAIR MANGA
                     
                 section(class="hide-on-small-only container")
@@ -36,6 +36,11 @@ html(lang="en")
             #main.row.full
                 div(class="col s12 m12 l12")
                     block content
+                    
+            #suggestions.full.nodisplay
+                .row
+                    #search-results(class="col l12")
+                            .row
                     
             script(src="/lib/jquery/dist/jquery.min.js" type="text/javascript")
             script(src="/lib/materialize/dist/js/materialize.min.js" type="text/javascript")
