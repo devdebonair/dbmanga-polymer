@@ -27,8 +27,6 @@ Database
 
 Search
 ===========
-- suggestions
-- link to browse if manga is not found
 
 Research
 ===========
@@ -38,3 +36,5 @@ Research
 
 Bugs
 ==========
+- Back button css color not white when lights off
+- Search bar focusout does not bring back main page
