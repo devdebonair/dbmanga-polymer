@@ -69,5 +69,5 @@ require("./database/db")(mongoose, function(err){
 
 console.log('Starting Server....');
 http.listen( config.env.port, function(){
-    console.log('Listening to port:\t%s', config.env.port );
+    console.log('Listening to port:\t%s', config.env.port);
 });
