@@ -34,6 +34,7 @@ $(function(){
         {
             $('#main').css('display','block');
             $('#search-results .row').empty();
+            $('#suggestions').css('display','none');
             isFetched = false;
         }
         
@@ -67,6 +68,7 @@ $(function(){
                 }
                 $('#main').css('display','none');
                 $('#search-results .row').append(stringToAppend);
+                $('#suggestions').css('display','block');
             });
         }
     });

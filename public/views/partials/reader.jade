@@ -9,6 +9,8 @@ block scripts
     script(src="/lib/slick.js/slick/slick.min.js" type="text/javascript")
     script.
         chapter = !{JSON.stringify(chapter)}
+        nextChapterNumber = #{nextChapterNumber}
+        mangaTitle = '#{title}'
     script(src="/js/reader.js" type="text/javascript")
 
 block content

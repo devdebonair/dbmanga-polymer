@@ -31,6 +31,7 @@ module.exports = function(router, passport, manga, user)
             
             var chapterNumber = parseInt(req.params.chapter);
             var chapterToReturn = null;
+            var nextChapterNumber = null;
             
             manga.findOne({ title: req.params.manga_name.replace(/_/g,' ') }, 'title chapters', function(err, data){
                 if(err)
@@ -45,13 +46,24 @@ module.exports = function(router, passport, manga, user)
                     if(data.chapters[i].number === chapterNumber)
                     {
                         chapterToReturn = data.chapters[i];
+                        if(i+1 < data.chapters.length && data.chapters[i+1].number > data.chapters[i].number)
+                        {
+                            nextChapterNumber = data.chapters[i+1].number;
+                        }
+                        else if(i-1 >= 0 && data.chapters[i-1].number > data.chapters[i].number)
+                        {
+                            nextChapterNumber = data.chapters[i-1].number;
+                        }
+                        break;
                     }
+                    
                 }
 
                 res.render('partials/reader', { 
                     layout: 'layout',
                     title: data.title,
                     chapter: chapterToReturn,
+                    nextChapterNumber: nextChapterNumber,
                     meta:{ 
                         title: 'Debonair Manga - Read Online for Free', 
                         description: 'Read Naruto, One Piece, Attack on Titan and many more manga on the best manga reading platform for free.',

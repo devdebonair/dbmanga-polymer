@@ -1,19 +1,14 @@
 HOME
 ============
-- Add captions to carousel
-
+- Make caption responsive
+- Make carousel responsive
 
 Reader
 ============
-- Single/Dual change stay on same page
 - Load chapter list //mmenu
 
 Browse
 ============
-- Finish mobile query build
-- Add searchbar filter
-- Add sort filter - date, popularity, numberOfChapters
-
 
 Manga
 ============
@@ -23,7 +18,6 @@ Manga
 
 Database
 ===========
-- Fix url's in database that has extra quotation mark
 
 Search
 ===========

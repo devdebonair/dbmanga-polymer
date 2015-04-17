@@ -1,12 +1,12 @@
 var mongoose = require("mongoose");
-var Manga = require("../../database/models/ModelManga");
-var Kissmanga = require("../manga-scraper").KissManga;
+var Manga = require("../database/models/ModelManga");
+var Kissmanga = require("./manga-scraper").KissManga;
 var fs = require("fs");
 
-var directory = fs.readFileSync('directory', 'utf8').split('\n');
+var directory = fs.readFileSync('mangalist', 'utf8').split('\n');
 var counter = 0;
 
-require("../../database/db")(mongoose, function(err){
+require("../database/db")(mongoose, function(err){
     if(err)
     {
         return console.log(err);
@@ -50,11 +50,12 @@ require("../../database/db")(mongoose, function(err){
             databaseObject.title = directory[counter].toLowerCase().replace(/-/g,' ');
             databaseObject.description = data.description;
             databaseObject.coverUrl = data.coverUrl;
+            databaseObject.cover.portrait = data.coverUrl;
             databaseObject.author = data.author;
             databaseObject.likes = Math.floor(Math.random() * (80000 - 0 + 1));
-
+    
             var acceptedGenres = ['shounen','shoujo','slice of life', 'adventure', 'seinen', 'romance', 'ecchi', 'mature', 'harem'];
-
+    
             databaseObject.genres = data.genres.map(function(str){
                 return str.toLowerCase();
             }).filter( function( el ) {
@@ -67,7 +68,7 @@ require("../../database/db")(mongoose, function(err){
             });
             
             databaseObject.numOfChapters = data.numOfChapters;
-            databaseObject.status = data.status.toLowerCase();
+            databaseObject.status = data.status.toLowerCase().replace('completed','complete');
             databaseObject.chapters = data.chapters;
             databaseObject.views['total'] = Math.floor(Math.random() * (1000000 - 0 + 1));
             databaseObject.views['currentMonth'] = Math.floor(Math.random() * (1000000 - 0 + 1));

@@ -8,7 +8,23 @@ block scripts
     script(src="/js/browse.js" type="text/javascript")
     
 block content
+    
+    button#simple-browse(class="btn red lighten-1 hide-on-med-and-down") Simple Browse
+    
+    #filter-sort.row(class="hide-on-med-and-down")
 
+        div.right-align
+            span.right-algin Sort By: 
+                
+            span.right-align(value="name" data-order="asc") Name  
+                i(class="fa fa-chevron-down fa-1x no-display")
+            span.right-align(value="popularity" data-order="asc") Popularity  
+                i(class="fa fa-chevron-down fa-1x no-display")
+            span.right-align(value="date" data-order="asc") Date  
+                i(class="fa fa-chevron-down fa-1x no-display")
+            span.right-align(value="numOfChapters" data-order="asc") Number of Chapters  
+                i(class="fa fa-chevron-down fa-1x no-display")
+            
     #filter.row
         div(class="col l2 hide-on-med-and-down")
             div
@@ -34,167 +50,173 @@ block content
                 h5 CHAPTERS
                 ul#filter-chapters
                     li(value="0 15") 0 - 15
-                    li(value="0 15") 15 - 30
-                    li(value="0 15") 30 - 60
-                    li(value="0 15") 60 - 120
-                    li(value="0 15") 120 - 240
-                    li(value="0 15") 240 - Up
+                    li(value="15 30") 15 - 30
+                    li(value="30 60") 30 - 60
+                    li(value="60 120") 60 - 120
+                    li(value="120 240") 120 - 240
+                    li(value="240 up") 240 - Up
                 
-        div(class="col s12 m12 l10")
+        section
+            div(class="col s12 m12 l10")
+                div#results.row(class="hide-on-med-and-down")
+        
+    #browse.row(class="hide-on-large-only center-align")
+        
+        section#browse-genre
             
-            section(class="hide-on-large-only")
-                
+            .row
                 h5 What genre would you like to read?
-                .row
-                    //Shounen
-                    div(class="col s12 l4")
-                        .card
-                            .card-image
-                                img(src="/images/attack-on-titan.jpg")
-                            .card-content
-                                span(class="card-title activator grey-text text-darken-4 center-align") Shounen
-                            .card-reveal
-                                span(class="card-title grey-text text-darken-4") Shounen 
-                                    i(class="mdi-navigation-close right")
-                                p Shounen manga is typically characterized by high-action, often humorous plots featuring male protagonists. The camaraderie between boys or men on sports teams, fighting squads and the like is often emphasized. Attractive female characters like Bulma from Dragon Ball or Nami from One Piece, with exaggerated features are also common. Main characters may also feature an ongoing desire to better themselves.
-                    
-                    //Adventure                                
-                    div(class="col s12 l4")
-                        .card
-                            .card-image
-                                img(src="/images/dragon-ball.jpg")
-                            .card-content
-                                span(class="card-title activator grey-text text-darken-4 center-align") Adventure
-                            .card-reveal
-                                span(class="card-title grey-text text-darken-4") Adventure 
-                                    i(class="mdi-navigation-close right")
-                                p Adventure manga is a genre of manga in which a main protagonist journeys on an adventure, an exciting undertaking involving risk and physical danger. This theme forms the basis of the main storyline. Stories are mainly character driven and may have no ulterior motive.
-                    
-                    //Slice of Life                                                    
-                    div(class="col s12 l4")
-                        .card
-                            .card-image
-                                img(src="/images/nagi-no-asukara.png")
-                            .card-content
-                                span(class="card-title activator grey-text text-darken-4 center-align") Slice of Life
-                            .card-reveal
-                                span(class="card-title grey-text text-darken-4") Slice of Life 
-                                    i(class="mdi-navigation-close right")
-                                p A slice of life story is a category for a story that portrays a "cut-out" sequence of events in a character's life. It usually tries to depict the everyday life of ordinary people, sometimes but rarely, with fantasy or science fiction elements involved.
+            
+            .row
+                //Shounen
+                div(value="shounen" class="col s12 m4 l4")
+                    .card
+                        .card-image
+                            img(src="/images/attack-on-titan.jpg")
+                        .card-content
+                            span(class="card-title activator grey-text text-darken-4 center-align") Shounen
+                        .card-reveal
+                            span(class="card-title grey-text text-darken-4") Shounen 
+                                i(class="mdi-navigation-close right")
+                            p Shounen manga is typically characterized by high-action, often humorous plots featuring male protagonists. The camaraderie between boys or men on sports teams, fighting squads and the like is often emphasized. Attractive female characters like Bulma from Dragon Ball or Nami from One Piece, with exaggerated features are also common. Main characters may also feature an ongoing desire to better themselves.
 
-                    //Harem                                                    
-                    div(class="col s12 l4")
-                        .card
-                            .card-image
-                                img(src="/images/the-world-god-only-knows.jpg")
-                            .card-content
-                                span(class="card-title activator grey-text text-darken-4 center-align") Harem
-                            .card-reveal
-                                span(class="card-title grey-text text-darken-4") Harem 
-                                    i(class="mdi-navigation-close right")
-                                p Harem is an ambiguously-defined subgenre of anime and manga characterized by a protagonist surrounded, usually amorously, by three or more members of the opposing sex and/or love interests.
+                //Adventure
+                div(value="adventure" class="col s12 m4 l4")
+                    .card
+                        .card-image
+                            img(src="/images/dragon-ball.jpg")
+                        .card-content
+                            span(class="card-title activator grey-text text-darken-4 center-align") Adventure
+                        .card-reveal
+                            span(class="card-title grey-text text-darken-4") Adventure 
+                                i(class="mdi-navigation-close right")
+                            p Adventure manga is a genre of manga in which a main protagonist journeys on an adventure, an exciting undertaking involving risk and physical danger. This theme forms the basis of the main storyline. Stories are mainly character driven and may have no ulterior motive.
+
+                //Slice of Life                                                    
+                div(value="slice of life" class="col s12 m4 l4")
+                    .card
+                        .card-image
+                            img(src="/images/nagi-no-asukara.png")
+                        .card-content
+                            span(class="card-title activator grey-text text-darken-4 center-align") Slice of Life
+                        .card-reveal
+                            span(class="card-title grey-text text-darken-4") Slice of Life 
+                                i(class="mdi-navigation-close right")
+                            p A slice of life story is a category for a story that portrays a "cut-out" sequence of events in a character's life. It usually tries to depict the everyday life of ordinary people, sometimes but rarely, with fantasy or science fiction elements involved.
+
+            .row
+                //Harem                                 
+                div(value="harem" class="col s12 m4 l4")
+                    .card
+                        .card-image
+                            img(src="/images/the-world-god-only-knows.jpg")
+                        .card-content
+                            span(class="card-title activator grey-text text-darken-4 center-align") Harem
+                        .card-reveal
+                            span(class="card-title grey-text text-darken-4") Harem 
+                                i(class="mdi-navigation-close right")
+                            p Harem is an ambiguously-defined subgenre of anime and manga characterized by a protagonist surrounded, usually amorously, by three or more members of the opposing sex and/or love interests.
+
+                //Romance
+                div(value="romance" class="col s12 m4 l4")
+                    .card
+                        .card-image
+                            img(src="/images/nisekoi.jpg")
+                        .card-content
+                            span(class="card-title activator grey-text text-darken-4 center-align") Romance
+                        .card-reveal
+                            span(class="card-title grey-text text-darken-4") Romance 
+                                i(class="mdi-navigation-close right")
+                            p Romance manga place their primary focus on the relationship and romantic love between two people, and usually have an "emotionally satisfying and optimistic ending."
+
+                //Shoujo
+                div(value="shoujo" class="col s12 m4 l4")
+                    .card
+                        .card-image
+                            img(src="/images/the-flower-we-saw.jpg")
+                        .card-content
+                            span(class="card-title activator grey-text text-darken-4 center-align") Shounen
+                        .card-reveal
+                            span(class="card-title grey-text text-darken-4") Shoujo 
+                                i(class="mdi-navigation-close right")
+                            p Shoujo manga is manga marketed to a female audience roughly between the ages of 10 and 18. Shoujo manga covers many subjects in a variety of narrative and graphic styles, from historical drama to science fiction — often with a strong focus on human and romantic relationships and emotions.
+
+            .row
+                //Sienen            
+                div(value="sienen" class="col s12 m4 l4")
+                    .card
+                        .card-image
+                            img(src="/images/black-lagoon.jpg")
+                        .card-content
+                            span(class="card-title activator grey-text text-darken-4 center-align") Shounen
+                        .card-reveal
+                            span(class="card-title grey-text text-darken-4") Sienen 
+                                i(class="mdi-navigation-close right")
+                            p Seinen manga is manga marketed to a male audience aged roughly 17 on into their 40's. In Japanese, the word seinen means "young man" or "young men." Seinen manga are distinguished from 'hentai', although there is sexual content of a softcore nature in some seinen series.
+
+                //Ecchi
+                div(value="ecchi" class="col s12 m4 l4")
+                    .card
+                        .card-image
+                            img(src="/images/esdeath-ecchi.jpg")
+                        .card-content
+                            span(class="card-title activator grey-text text-darken-4 center-align") Ecchi
+                        .card-reveal
+                            span(class="card-title grey-text text-darken-4") Ecchi 
+                                i(class="mdi-navigation-close right")
+                            p A manga term denoting sexual content that is added into the story mainly for fans of the genre. Although borderline at times, ecchi manga does not usually involve nudity.
+
+                //Mature                                
+                div(value="mature" class="col s12 m4 l4")
+                    .card
+                        .card-image
+                            img(src="/images/mature.jpg")
+                        .card-content
+                            span(class="card-title activator grey-text text-darken-4 center-align") Mature
+                        .card-reveal
+                            span(class="card-title grey-text text-darken-4") Mature 
+                                i(class="mdi-navigation-close right")
+                            p Manga which features nudity and places characters in sexual situations. Themes are targeted towards adults and must be 18 years or older to view.
+                            
+            .row
+                button#continue-chapter(class="btn red lighten-1") CONTINUE
+
+        section#browse-chapter(class="no-display")      
+            
+            h5 How long will you be reading?
+            .row
+                div(value="0 30" class="col s12 l4")
+                    .card
+                        .card-content
+                            .valign-wrapper
+                                .valign
+                                    span(class="grey-text text-darken-4") Short
                     
-                    //Romance                                        
-                    div(class="col s12 l4")
-                        .card
-                            .card-image
-                                img(src="/images/nisekoi.jpg")
-                            .card-content
-                                span(class="card-title activator grey-text text-darken-4 center-align") Romance
-                            .card-reveal
-                                span(class="card-title grey-text text-darken-4") Romance 
-                                    i(class="mdi-navigation-close right")
-                                p Romance manga place their primary focus on the relationship and romantic love between two people, and usually have an "emotionally satisfying and optimistic ending."
+                div(value="30 120" class="col s12 l4")
+                    .card
+                        .card-content
+                            .valign-wrapper
+                                .valign
+                                    span(class="grey-text text-darken-4") Moderate
+                                    
+                div(value="120 240" class="col s12 l4")
+                    .card
+                        .card-content
+                            .valign-wrapper
+                                .valign
+                                    span(class="grey-text text-darken-4") Long
                     
-                    //Shoujo                                
-                    div(class="col s12 l4")
-                        .card
-                            .card-image
-                                img(src="/images/the-flower-we-saw.jpg")
-                            .card-content
-                                span(class="card-title activator grey-text text-darken-4 center-align") Shounen
-                            .card-reveal
-                                span(class="card-title grey-text text-darken-4") Shoujo 
-                                    i(class="mdi-navigation-close right")
-                                p Shoujo manga is manga marketed to a female audience roughly between the ages of 10 and 18. Shoujo manga covers many subjects in a variety of narrative and graphic styles, from historical drama to science fiction — often with a strong focus on human and romantic relationships and emotions.
-                    
-                    //Sienen                                
-                    div(class="col s12 l4")
-                        .card
-                            .card-image
-                                img(src="/images/black-lagoon.jpg")
-                            .card-content
-                                span(class="card-title activator grey-text text-darken-4 center-align") Shounen
-                            .card-reveal
-                                span(class="card-title grey-text text-darken-4") Sienen 
-                                    i(class="mdi-navigation-close right")
-                                p Seinen manga is manga marketed to a male audience aged roughly 17 on into their 40's. In Japanese, the word seinen means "young man" or "young men." Seinen manga are distinguished from 'hentai', although there is sexual content of a softcore nature in some seinen series.
-                    
-                    //Ecchi                                
-                    div(class="col s12 l4")
-                        .card
-                            .card-image
-                                img(src="/images/esdeath-ecchi.jpg")
-                            .card-content
-                                span(class="card-title activator grey-text text-darken-4 center-align") Ecchi
-                            .card-reveal
-                                span(class="card-title grey-text text-darken-4") Ecchi 
-                                    i(class="mdi-navigation-close right")
-                                p A manga term denoting sexual content that is added into the story mainly for fans of the genre. Although borderline at times, ecchi manga does not usually involve nudity.
-                    
-                    //Mature                                
-                    div(class="col s12 l4")
-                        .card
-                            .card-image
-                                img(src="/images/mature.jpg")
-                            .card-content
-                                span(class="card-title activator grey-text text-darken-4 center-align") Mature
-                            .card-reveal
-                                span(class="card-title grey-text text-darken-4") Mature 
-                                    i(class="mdi-navigation-close right")
-                                p Manga which features nudity and places characters in sexual situations. Themes are targeted towards adults and must be 18 years or older to view.
-                                              
-            section(class="hide-on-large-only")      
+                div(value="240 up" class="col s12 l4")
+                    .card
+                        .card-content
+                            .valign-wrapper
+                                .valign
+                                    span(class="grey-text text-darken-4") Marathon
                 
-                h5 How many chapters would you like to read?
-                .row
-                    div(class="col s12 l4")
-                    
-                        .card
-                            .card-content
-                                .valign-wrapper
-                                    .valign
-                                        span(class="grey-text text-darken-4") 0 - 15
-                        
-                        .card
-                            .card-content
-                                .valign-wrapper
-                                    .valign
-                                        span(class="grey-text text-darken-4") 15 - 30
-                        
-                        .card
-                            .card-content
-                                .valign-wrapper
-                                    .valign
-                                        span(class="grey-text text-darken-4") 30 - 60
-                        
-                        .card
-                            .card-content
-                                .valign-wrapper
-                                    .valign
-                                        span(class="grey-text text-darken-4") 60 - 120
-                        
-                        .card
-                            .card-content
-                                .valign-wrapper
-                                    .valign
-                                        span(class="grey-text text-darken-4") 120 - 240
-                        
-                        .card
-                            .card-content
-                                .valign-wrapper
-                                    .valign
-                                        span(class="grey-text text-darken-4") 240 - Up
-                                        
-            section
-                div#results.row
+            .row
+                button#continue-results(class="btn red lighten-1") CONTINUE
+
+        section
+                button#browse-back(value="chapter" class="btn red lighten-1 no-display") BACK
+                div#browse-results
+        

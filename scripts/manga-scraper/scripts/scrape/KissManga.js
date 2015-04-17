@@ -417,7 +417,7 @@ function helper_fetchChapterPages( args, callback ){
 
                 for( var url in rawLinks )
                 {
-                    linkArray.push( rawLinks[url].replace('"', '') );
+                    linkArray.push( rawLinks[url].replace(/"/g, '') );
                 }
 
                 linkArray.forEach( function( element, i ){

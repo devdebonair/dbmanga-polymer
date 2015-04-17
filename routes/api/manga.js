@@ -45,7 +45,8 @@ module.exports = function(router)
             var status = req.query.status || [/.*/];
             var min = parseInt(req.query.min) || -1;
             var max = parseInt(req.query.max) || Number.MAX_VALUE;
-            
+            var limit = parseInt(req.query.limit) || 0;
+
             if(typeof genres === 'string')
             {
                 genres = genres.split(" ");
@@ -56,7 +57,7 @@ module.exports = function(router)
                 status = status.split(" ");
             }
             
-            Manga.find({ title: { $regex: title }, genres: { $all: genres }, status: { $in: status }, numOfChapters: { $gt: min, $lt: max } }, 'title coverUrl artist description genres numOfChapters status', { sort: { 'views.currentWeek': -1 } }, function(err, data){
+            Manga.find({ $or: [ { title: { $regex: title }, genres: { $all: genres }, status: { $in: status }, numOfChapters: { $gt: min, $lt: max } } ] }, 'title coverUrl artist description genres numOfChapters status views updated_at', { sort: { 'views.currentWeek': -1 }, limit: limit }, function(err, data){
                 if(err)
                 {
                     res.status(404).json(err);

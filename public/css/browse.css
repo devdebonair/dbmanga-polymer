@@ -10,3 +10,16 @@
 #filter li {
     cursor: pointer;
 }
+
+#filter-sort span {
+    padding: 20px;
+    cursor: pointer;
+}
+
+#filter-sort span:hover {
+    color: #ef5350;
+}
+
+.selected {
+    border: solid red thick;
+}

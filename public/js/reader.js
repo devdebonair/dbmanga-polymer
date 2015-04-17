@@ -7,11 +7,13 @@ buildSingleBook();
 function buildSingleBook(height)
 {
     this.height = height || $(window).height();
-    
+    var toAppend = '';
     for(var i = 0; i < chapter.pages.length; i++)
     {
-        $('#pages').append('<div class="center-align"><img src="'+ chapter.pages[i].image +'"></img></div>');
+        toAppend += '<div class="center-align"><img value="'+ i +'" src="'+ chapter.pages[i].image +'"></img></div>';
     }
+    toAppend += '<div><a href="/manga/'+ mangaTitle +'/' + nextChapterNumber + '" class="btn red lighten-1">NEXT CHAPTER</a></div>';
+    $('#pages').append(toAppend);
     
     $('#pages img').height(this.height);
     
@@ -28,10 +30,10 @@ function buildSingleBook(height)
 function buildDualBook(height)
 {
     this.height = height || $(window).height();
+    var toAppend = '';
     for(var i = 0; i < chapter.pages.length; i++)
     {
-        var toAppend = '<div class="center-align"><img src="'+ chapter.pages[i].image +'"></img>';
-        console.log(chapter.pages[i].image);
+        toAppend += '<div class="center-align"><img value="'+ i +'" src="'+ chapter.pages[i].image +'"></img>';
         //If another page exists
         if(i+1 < chapter.pages.length)
         {
@@ -43,15 +45,15 @@ function buildDualBook(height)
             
             if( (image1.naturalWidth/image1.naturalHeight) < 0.8 && (image2.naturalWidth/image2.naturalHeight) < 0.8)
             {
-                toAppend += '<img src="'+ chapter.pages[i+1].image +'"></img>';
+                toAppend += '<img value="'+ (i+1) +'"src="'+ chapter.pages[i+1].image +'"></img>';
                 i++;
             }
         }
         
         toAppend += '</div>';
-        console.log(toAppend);
-        $('#pages').append(toAppend);
     }
+    toAppend += '<div><a href="/manga/'+ mangaTitle +'/' + nextChapterNumber + '" class="btn red lighten-1">NEXT CHAPTER</a></div>';
+    $('#pages').append(toAppend);
     
     $('#pages img').height(this.height);
     
@@ -81,19 +83,24 @@ $('#pages').click(function(event){
 $('#control-page-toggle').click(function(){
     isDual = !isDual;
     
+    var currentPage = findCurrentPage();
     $('#pages').slick('unslick');
     $('#pages').empty();
-
+    
     if(isDual)
     {
         buildDualBook();
         $(this).removeClass('fa-files-o');
         $(this).addClass('fa-file-o');
+        currentPage = continuePage('' + currentPage);
+        $('#pages').slick('slickGoTo', currentPage);
         return;
     }
     buildSingleBook();
     $(this).removeClass('fa-file-o');
     $(this).addClass('fa-files-o');
+    currentPage = continuePage('' + currentPage);
+    $('#pages').slick('slickGoTo', currentPage);
 });
 
 $('#control-light-toggle').click(function(){
@@ -176,3 +183,26 @@ $('#control-zoom-toggle').click(function(){
     $(this).removeClass('fa-search-plus');
     $(this).addClass('fa-search-minus');
 });
+
+
+function findCurrentPage()
+{
+    var currentSlide = $('#pages').slick('slickCurrentSlide');
+    return $('#pages .slick-track').children().eq(currentSlide).children().first().attr('value');
+};
+
+function continuePage(pageNumber)
+{
+    var length = $('#pages .slick-track').children().length;
+    for(var i = 0; i < length; i++)
+    {
+        for(var j = 0; j < $('#pages .slick-track').children().eq(i).children().length; j++)
+        {
+            console.log('%s === %s', $('#pages .slick-track').children().eq(i).children().eq(j).attr('value'), pageNumber);
+            if($('#pages .slick-track').children().eq(i).children().eq(j).attr('value') === pageNumber)
+            {
+                return i;
+            }
+        }
+    }
+};
