@@ -3,55 +3,18 @@
 }
 
 #news-slide {
-    max-height: 600px;
-    max-width: 100%;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+	overflow: hidden;
+	height: 450px;
 }
 
-.slider__wrapper {
-    width: 100%;
-    height: 800px;    
+#news-slide div, img, .row {
+	padding: 0px;
+	margin: 0px;
+	display: table;
+	max-height: 450px;
 }
 
-#news-slide img {
-    width: 100%;
-}
-
-#news-slide .caption-wrapper {
-    position: relative;
-    bottom: -55%;
-	max-width: 800px;
-	padding-left: 100px;
-	background: -webkit-linear-gradient(left, black, transparent); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, black, transparent); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, black, transparent); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, black, transparent); /* Standard syntax */
-}
-
-#news-slide .slider__item {
-    background-repeat: no-repeat;
-    background-size: 100%;
-    overflow: hidden;
-}
-
-#news-slide .caption {
-    color: white;
-}
-
-.slider__arrows {
-    font-size: 120px;
-    cursor: pointer;
-    color: white;
-    font-weight: lighter;
-}
-
-.slider__nav-item {
-    border-radius: 50%;
-    color: white;
-}
-
-.slider__nav-item--current {
-    color: black;
+.see-all {
+	padding: 10px;
+	font-size: 15px;
 }
