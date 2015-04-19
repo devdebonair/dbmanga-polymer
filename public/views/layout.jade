@@ -18,20 +18,25 @@ html(lang="en")
             #banner
                 include menu.jade
                 
-                section.full-width
-                    a(id="menu-button" href="#" data-activates="slide-out" class="button-collapse fake-link")
-                        i(class="mdi-navigation-menu small red-text text-lighten-2")
-                    i(id="search-button" class="mdi-action-search small red-text text-lighten-2 fake-link hide-on-small-only")
-                
-                a(href="/")
-                    h3(id="header" class="letter-space center-align red-text text-lighten-1") DEBONAIR MANGA
+                section.row(id="nav")
+                    div(class="col s2 m2 l2")
+                        a(id="menu-button" href="#" data-activates="slide-out" class="button-collapse fake-link")
+                            i(class="mdi-navigation-menu small red-text text-lighten-2")
                     
-                section(class="hide-on-small-only container")
-                    
-                    form(method="GET" class="no-display" action="/search")
-                        div(class="input-field col s12")
-                            input#search(type="text" autocomplete="off")
-                            label(for="search") Manga, Author, Genre
+                    div(class="col s10 m8 l8")
+                        
+                        a(href="/")
+                            h3(id="header" class="letter-space center-align red-text text-lighten-1") DEBONAIR MANGA
+                        
+                        section(class="hide-on-small-only container")
+                            form(method="GET" class="no-display" action="/search")
+                                div(class="input-field col s12")
+                                    input#search(type="text" autocomplete="off")
+                                    label(for="search") Manga, Author, Genre
+                            
+                    div(class="col m2 l2 right-align")
+                        span(id="search-button-wrapper")
+                            i(id="search-button" class="mdi-action-search small red-text text-lighten-2 fake-link hide-on-small-only")
             
             #main.row.full
                 div(class="col s12 m12 l12")

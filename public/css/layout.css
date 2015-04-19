@@ -86,7 +86,23 @@ html, body {
     -webkit-transition-duration: 0.8s;
 }
 
+#nav {
+    padding: 0px;
+    margin: 0px;
+}
+
+#nav {
+    padding-bottom: 10px;
+}
+
+#nav > div {
+    height: auto;
+    padding: 20px 10px 5px 10px;
+}
+
 #header {
+    margin: 0px;
+    font-size: 35px;
     transition-duration: 0.8s;
     -o-transition-duration: 0.8s;
     -moz-transition-duration: 0.8s;
@@ -120,9 +136,6 @@ html, body {
 }
 
 #search-button {
-    position: absolute;
-    top: 0;
-    right: 0;
     padding-right: 50px;
 }
 
