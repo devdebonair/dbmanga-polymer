@@ -46,6 +46,8 @@ $(function(){
         if(isFetched)
         {
             var queryRegex = new RegExp(query,'g');
+
+            // filter the fetched images as user types
             $('#search-results .row').children().each(function(){
                 if(!queryRegex.test($(this).data('title')))
                 {
@@ -64,7 +66,7 @@ $(function(){
                 var stringToAppend = '';
                 for(var i = 0; i < data.length; i++)
                 {
-                    stringToAppend += '<div class="col l2" data-title="'+ data[i].title +'"><a href="/manga/'+ data[i].title.replace(/ /g,'_') +'"><img height="150" width="240" class="responsive-img" src="'+ data[i].coverUrl +'"></a></div>';
+                    stringToAppend += '<div class="col l2" data-title="'+ data[i].title +'"><a href="/manga/'+ data[i].title.replace(/ /g,'_') +'"><img class="full responsive-img z-depth-2" src="'+ data[i].coverUrl +'"></a></div>';
                 }
                 $('#main').css('display','none');
                 $('#search-results .row').append(stringToAppend);
