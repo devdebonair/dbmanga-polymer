@@ -1,13 +1,12 @@
 var express = require("express");
 var app = express();
-var http = require("http").Server(app);
-
 var session = require("express-session");
 var mongoose = require("mongoose");
 var MongoStore = require("connect-mongo")(session);
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var methodOverride = require("method-override");
+var logger = require('morgan');
 
 var config = require("./config");
 var passport = require("passport");
@@ -26,8 +25,9 @@ app.use(function(req, res, next) {
         next();
     }
 }); 
-app.use( '/lib', express.static(__dirname + '/public/static') );
-
+app.use(logger('dev'));
+app.use( '/lib', express.static(__dirname + '/public/lib') );
+app.use( '/public', express.static(__dirname + '/public'));
 app.use( cookieParser() );
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: false } ) );
@@ -65,6 +65,6 @@ require("./database/db")(mongoose, function(err){
 });
 
 console.log('Starting Server....');
-http.listen( config.env.port, function(){
+app.listen( config.env.port, function(){
     console.log('Listening to port:\t%s', config.env.port );
 });
