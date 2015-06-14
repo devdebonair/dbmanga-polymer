@@ -6,20 +6,13 @@ module.exports = function(router)
         
         .post(function(req, res){
 
-            var manga = new Manga();
-            
-            for( var key in req.body )
-            {
-                manga[key] = req.body[key];
-            }
-            
+            var manga = new Manga(req.body);
             manga.save(function(err, manga){
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(manga);
+                return res.status(200).json(manga);
             });
         });
     
@@ -29,10 +22,9 @@ module.exports = function(router)
             Manga.find(null, 'title id', function(err, data){
                 if(err)
                 {
-                    req.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(data);
+                return res.status(200).json(manga);
             });
         });
         
@@ -59,10 +51,9 @@ module.exports = function(router)
             Manga.find({ title: { $regex: title }, genres: { $all: genres }, status: { $in: status }, numOfChapters: { $gt: min, $lt: max } }, 'title coverUrl artist description genres numOfChapters status', { sort: { 'views.currentWeek': -1 } }, function(err, data){
                 if(err)
                 {
-                    res.status(404).json(err);
-                    return;
+                    return res.status(404).json(err);
                 }
-                res.json(data);
+                return res.status(200).json(manga);
             });
         });
 
@@ -73,10 +64,9 @@ module.exports = function(router)
             Manga.findById( req.params.manga_id, req.query.select, function(err, manga){
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(manga);
+                return res.status(200).json(manga);
             });
         })
         
@@ -85,10 +75,9 @@ module.exports = function(router)
             Manga.findByIdAndUpdate( req.params.manga_id, req.body, function(err, manga){
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(manga);
+                return res.status(200).json(manga);
             });
         })
         
@@ -97,10 +86,9 @@ module.exports = function(router)
             Manga.findByIdAndRemove( req.params.manga_id, function(err, manga){
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(manga);
+                return res.status(200).json(manga);
             });
         });
         
@@ -110,10 +98,9 @@ module.exports = function(router)
             Manga.findByIdAndUpdate(req.params.manga_id, { $inc: { likes: 1 }}, function(err, data){
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(data.likes);
+                return res.status(200).json(data.likes);
             })
         })
         
@@ -121,10 +108,9 @@ module.exports = function(router)
             Manga.findByIdAndUpdate(req.params.manga_id, { $inc: { likes: -1 }}, function(err, data){
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(data.likes);
+                return res.status(200).json(data.likes);
             })
         });
         
@@ -145,10 +131,9 @@ module.exports = function(router)
             Manga.findById(req.params.manga_id, select, function(err, manga){
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(manga.chapters);
+                return res.status(200).json(manga.chapters);
             });
         })
         
@@ -158,10 +143,9 @@ module.exports = function(router)
                 function(err, manga){
                     if(err)
                     {
-                        res.send(err);
-                        return;
+                        return res.status(404).json({message: err});
                     }
-                    res.json(manga);
+                    return res.status(200).json(manga);
                 });
         });
         
@@ -172,8 +156,7 @@ module.exports = function(router)
             Manga.findById( req.params.manga_id, function(err, manga) {
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
                 
                 var chapterToReturn = null;
@@ -193,7 +176,7 @@ module.exports = function(router)
                     return;
                 }
 
-                res.json(chapterToReturn);
+                return res.status(200).json(chapterToReturn);
             });    
         })
         
@@ -203,10 +186,9 @@ module.exports = function(router)
                 function(err, manga) {
                     if(err)
                     {
-                        res.send(err);
-                        return;
+                        return res.status(404).json({message: err});
                     }
-                    res.json(manga);
+                    res.json(data);
                 });
         });
     
@@ -217,10 +199,9 @@ module.exports = function(router)
             Manga.findPopular(req.params.limit, function(err, data){
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(data);
+                return res.status(200).json(data);
             });
         });
         
@@ -231,10 +212,9 @@ module.exports = function(router)
             Manga.findTrending(req.params.limit, function(err, data){
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(data);
+                return res.status(200).json(data);
             });
         });
         
@@ -245,10 +225,9 @@ module.exports = function(router)
             Manga.findUpdated(req.params.limit, function(err, data){
                 if(err)
                 {
-                    res.send(err);
-                    return;
+                    return res.status(404).json({message: err});
                 }
-                res.json(data);
+                return res.status(200).json(data);
             });
         });
         
