@@ -8,7 +8,6 @@ var MongoStore = require("connect-mongo")(session);
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var methodOverride = require("method-override");
-var expressLayouts = require("express-ejs-layouts");
 
 var config = require("./config");
 var passport = require("passport");
@@ -27,14 +26,8 @@ app.use(function(req, res, next) {
         next();
     }
 }); 
-app.use( express.static(__dirname + '/public') );
 app.use( '/lib', express.static(__dirname + '/public/static') );
-app.set( 'views', __dirname + '/public/views/' );
-app.engine( 'html', require("ejs").__express );
-app.set( 'view engine', 'html' );
 
-app.use( expressLayouts );
-app.set("layout extractScripts", true);
 app.use( cookieParser() );
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: false } ) );

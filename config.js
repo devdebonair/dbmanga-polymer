@@ -12,9 +12,5 @@ module.exports = {
     
     session: {
         secret: 'mySecret'
-    },
-    
-    mailchimp: {
-        apiKey: '25839724454b981f21579504c8ae5e99-us10'
     }
 };
