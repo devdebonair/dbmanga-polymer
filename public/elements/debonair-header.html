@@ -66,7 +66,7 @@
 				</section>
 
 				<section id="header_search" class="flex no-display">
-					<input id="header_search_bar" type="search" autocomplete="off" on-focusout="toggleSearch">
+					<input id="header_search_bar" type="search" autocomplete="off" on-focusout="toggleSearch" on-keyup="searchInput">
 				</section>
 
 			</paper-toolbar>
@@ -97,7 +97,15 @@
 				{
 					toggables[i].classList.remove('no-display');
 					this.$.header_search.classList.add('no-display');
+					this.$.header_search_bar.value = '';
 				}
+			}
+		},
+		searchInput: function(e)
+		{
+			if(e.keyCode === 27)
+			{
+				this.$.header_search_bar.blur();
 			}
 		}
 	});
