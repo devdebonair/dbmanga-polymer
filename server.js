@@ -27,6 +27,7 @@ app.use(function(req, res, next) {
 }); 
 app.use(logger('dev'));
 app.use( '/lib', express.static(__dirname + '/public/lib') );
+app.use( '/elements', express.static(__dirname + '/public/elements'))
 app.use( '/public', express.static(__dirname + '/public'));
 app.use( cookieParser() );
 app.use( bodyParser.json() );
