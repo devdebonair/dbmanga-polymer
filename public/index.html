@@ -2,12 +2,21 @@
 <html>
 <head>
 	<title>Debonair Manga</title>
-	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-	<!-- <script src="/lib/webcomponentsjs/webcomponents.min.js" type="text/javascript" charset="utf-8">
-	</script> -->
+	<script src="/lib/webcomponentsjs/webcomponents-lite.min.js" type="text/javascript" charset="utf-8">
+	</script>
+	<link rel="import" type="text/html" href="/lib/iron-flex-layout/classes/iron-flex-layout.html">
+	<link rel="import" type="text/html" href="/elements/debonair-app.html">
+	<style type="text/css">
+		body {
+			font-family: 'Roboto';
+			min-height: 100vh;
+			min-width: 100vw;
+		}
+	</style>
 </head>
-<body>
-
+<body class="fullbleed layout">
+	<debonair-app></debonair-app>
 </body>
 </html>
