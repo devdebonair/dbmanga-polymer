@@ -1,8 +1,6 @@
 <link rel="import" type="text/html" href="/lib/paper-header-panel/paper-header-panel.html">
 <link rel="import" type="text/html" href="/lib/paper-toolbar/paper-toolbar.html">
-<link rel="import" type="text/html" href="/lib/iron-icons/iron-icons.html">
-<link rel="import" type="text/html" href="/lib/iron-iconset-svg/iron-iconset-svg.html">
-<link rel="import" type="text/html" href="/lib/paper-icon-button/paper-icon-button.html">
+<link rel="import" type="text/html" href="/elements/debonair-search.html">
 <dom-module id="debonair-header">
 	<style>
 		section {
@@ -24,27 +22,14 @@
 			display: none;
 		}
 
-		.block-display {
-			display: block;
-		}
-
-		input {
-			background-color: inherit;
-			border: none;
-			font-size: 20px;
-			outline: none;
-			cursor: auto;
-			color: #EF5350;
-			letter-spacing: 5px;
-			text-transform: uppercase;
-			display: table-cell;
-			width: 100%;
-		}
-
 		@media(max-width: 320px) {
 			#header-home-link {
 				font-size: 20px;
 			}
+		}
+
+		#right {
+			max-width: 100%;
 		}
 	</style>
 	<template>
@@ -62,13 +47,11 @@
 				</section>
 
 				<section id="right">
-					<paper-icon-button icon="search" on-click="toggleSearch"></paper-icon-button>
+					<debonair-search 
+						id="header-search-bar" 
+						on-search-changed="_searchHandler">
+					</debonair-search>
 				</section>
-
-				<section id="header_search" class="flex no-display">
-					<input id="header_search_bar" type="search" autocomplete="off" on-focusout="toggleSearch" on-keyup="searchInput">
-				</section>
-
 			</paper-toolbar>
 		</paper-header-panel>
 	</template>
@@ -77,35 +60,21 @@
 <script type="text/javascript">
 	Polymer({
 		is: "debonair-header",
-		ready: function()
+		_searchHandler: function(event)
 		{
-			this.searchActivated = false;
-		},
-		toggleSearch: function()
-		{
-			this.searchActivated = !this.searchActivated;
 			var toggables = document.getElementsByClassName('toggable');
 			for(var i = 0; i < toggables.length; i++)
 			{
-				if(this.searchActivated)
+				if(event.detail.isSearchActivated)
 				{
 					toggables[i].classList.add('no-display');
-					this.$.header_search.classList.remove('no-display');
-					this.$.header_search_bar.focus();
+					document.getElementById('right').classList.add('flex');
 				}
 				else
 				{
 					toggables[i].classList.remove('no-display');
-					this.$.header_search.classList.add('no-display');
-					this.$.header_search_bar.value = '';
+					document.getElementById('right').classList.remove('flex');
 				}
-			}
-		},
-		searchInput: function(e)
-		{
-			if(e.keyCode === 27)
-			{
-				this.$.header_search_bar.blur();
 			}
 		}
 	});
