@@ -1,13 +1,69 @@
 <dom-module id="debonair-book">
-	<style></style>
+	<style>
+		#wrapper {
+			height: 442px;
+			overflow: hidden;
+			border-radius: 10px;
+			margin: 5%;
+			border: solid thin #DBE1D2;
+			box-shadow: 2px 2px 5px #A7ADA1;
+		}
+
+		#book_description_wrapper {
+			height: 100%;
+		}
+
+		#book_description_content {
+			background-color: inherit;
+			width: auto;
+			overflow-x: hidden;
+			overflow-y: scroll;
+		}
+
+		#book_description_content {
+			height: 100;
+			padding: 25px;
+		}
+
+		#book_description_content ::content .book_title {
+			font-size: 24px;
+			letter-spacing: 5px;
+			font-weight: 400;
+		}
+
+		::content .book_description p {
+			line-height: 30px;
+		}
+
+		::content .seperator {
+			border-color: white;
+		}
+
+		.no-display {
+			display: none;
+		}
+	</style>
 	<template>
-		<img src="http://papystreaming.com/fr/files/2014/03/shingeki-no-kyojin-poster.jpg" alt="manga-image">
+		<section id="wrapper" class="horizontal layout flex">
+			<section id="book_images">
+				<img id="cover_image" width="320" src="http://papystreaming.com/fr/files/2014/03/shingeki-no-kyojin-poster.jpg" alt="manga-image">
+			</section>
+			<section id="book_description_wrapper" class="vertical layout flex">
+				<div id="book_description_content">
+					<content></content>
+				</div>
+			</section>
+		</section>
 	</template>
 </dom-module>
 
 <script type="text/javascript">
 	Polymer({
 		is: "debonair-book",
+		properties: {
+			cover: String,
+			images: Array
+		},
 		ready: function()
 		{
 
