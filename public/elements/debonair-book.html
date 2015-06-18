@@ -41,16 +41,70 @@
 		::content .book_summary p {
 			line-height: 30px;
 		}
+
+		/* entire container, keeps perspective */
+		.flip-container {
+			perspective: 1000;
+		}
+
+		/* flip the pane when hovered */
+		.flip-container:hover .flipper, .flip-container.hover .flipper {
+			transform: rotateY(180deg);
+		}
+
+		.flip-container, .front, .back {
+			width: 320px;
+			height: 480px;
+		}
+
+		/* flip speed goes here */
+		.flipper {
+			transition: 0.6s;
+			transform-style: preserve-3d;
+
+			position: relative;
+		}
+
+		/* hide back of pane during swap */
+		.front, .back {
+			backface-visibility: hidden;
+
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		/* front pane, placed above back */
+		.front {
+			z-index: 2;
+			/* for firefox 31 */
+			transform: rotateY(0deg);
+		}
+
+		/* back, initially hidden pane */
+		.back {
+			transform: rotateY(180deg);
+		}
 	</style>
 	<template>
 		<section id="wrapper" class="horizontal layout flex">
 			<section id="book_images">
-				<img id="cover_image" width="320" src="http://papystreaming.com/fr/files/2014/03/shingeki-no-kyojin-poster.jpg" alt="manga-image">
-				<div class="book_images_previews" style="display: none">
-					<img src="http://2.bp.blogspot.com/-qstAA84knZ4/TpEpJgxgZ5I/AAAAAAAAAs0/uIf-pvdq5Wk/000.jpg?imgmax=10000" alt="page_1">
-					<img src="http://2.bp.blogspot.com/-EoqBKmNonbk/TpEpML00CGI/AAAAAAAAAtA/pXYmaeUhpnY/001.jpg?imgmax=10000" alt="page_2">
-					<img src="http://2.bp.blogspot.com/-_E0yUVbgkkM/TpEpPzBgixI/AAAAAAAAAtM/R1dxInZ0XIc/002.jpg?imgmax=10000" alt="page_3">
+
+				<div class="flip-container">
+					<div class="flipper">
+						<div class="front">
+							<img id="cover_image" width="320" src="http://papystreaming.com/fr/files/2014/03/shingeki-no-kyojin-poster.jpg" alt="manga-image">
+						</div>
+						<div class="back">
+							<img width="320" height="442" src="http://2.bp.blogspot.com/-EoqBKmNonbk/TpEpML00CGI/AAAAAAAAAtA/pXYmaeUhpnY/001.jpg?imgmax=10000" alt="page_2">
+						</div>
+					</div>
 				</div>
+				<!-- <div class="book_images_previews" style="display: none">
+							<img width="320" src="http://2.bp.blogspot.com/-qstAA84knZ4/TpEpJgxgZ5I/AAAAAAAAAs0/uIf-pvdq5Wk/000.jpg?imgmax=10000" alt="page_1">
+					<img src="http://2.bp.blogspot.com/-_E0yUVbgkkM/TpEpPzBgixI/AAAAAAAAAtM/R1dxInZ0XIc/002.jpg?imgmax=10000" alt="page_3">
+				</div> -->
+
 			</section>
 			<section id="book_description_wrapper" class="vertical layout flex">
 				<div id="book_description_content">
