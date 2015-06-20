@@ -2,8 +2,9 @@
 	<style>
 		#wrapper {
 			height: 442px;
+			width: 320px;
 			border-radius: 10px;
-			margin: 5%;					/*Temporary*/
+			margin: 5%;					/*Temporary padding to see element*/
 			border: solid thin #DBE1D2;
 			box-shadow: 2px 2px 5px #A7ADA1;
 		}
@@ -31,13 +32,6 @@
 			color: #1C1E2E;
 		}
 
-		::content #book_summary {
-			display: inline-block;
-			height: 25px;
-			overflow: hidden;
-			word-spacing: 100px;
-		}
-
 		::content .book_summary p {
 			line-height: 30px;
 		}
@@ -48,7 +42,7 @@
 		}
 
 		/* flip the pane when hovered */
-		.flip-container:hover .flipper, .flip-container.hover .flipper {
+		.flipper, .flip-container.hover .flipper {
 			transform: rotateY(180deg);
 		}
 
@@ -66,7 +60,7 @@
 		}
 
 		/* hide back of pane during swap */
-		.front, .back {
+		.front, .back, .book_image {
 			backface-visibility: hidden;
 
 			position: absolute;
@@ -82,35 +76,54 @@
 		}
 
 		/* back, initially hidden pane */
-		.back {
+		.back, .book_image {
 			transform: rotateY(180deg);
+		}
+
+		.no-display {
+			display: none;
+		}
+
+		.info-button {
+			color: white;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			z-index: 99;
+			background-color: transparent;
+			cursor: pointer;
+			padding: 0 5px 5px 0;
+		}
+
+		.book_image > img {
+			border-radius: 10px;
 		}
 	</style>
 	<template>
-		<section id="wrapper" class="horizontal layout flex">
-			<section id="book_images">
 
+		<section id="wrapper" class="horizontal layout flex">
+
+<!--================================= Book Images ================================-->
+			<section id="book_images">
 				<div class="flip-container">
 					<div class="flipper">
-						<div class="front">
-							<img id="cover_image" width="320" src="http://papystreaming.com/fr/files/2014/03/shingeki-no-kyojin-poster.jpg" alt="manga-image">
-						</div>
-						<div class="back">
-							<img height="442" width="320" src="http://2.bp.blogspot.com/-_E0yUVbgkkM/TpEpPzBgixI/AAAAAAAAAtM/R1dxInZ0XIc/002.jpg?imgmax=10000" alt="page_3">
-						</div>
+						<template is="dom-repeat" items="{{images}}">
+							<div class="book_image">
+								<img height="442" width="320" src="{{item}}" on-click="_imageClickHandler">
+				<span class="info-button">READ</span>
+							</div>
+						</template>
 					</div>
 				</div>
-				<!-- <div class="book_images_previews" style="display: none">
-							<img width="320" src="http://2.bp.blogspot.com/-qstAA84knZ4/TpEpJgxgZ5I/AAAAAAAAAs0/uIf-pvdq5Wk/000.jpg?imgmax=10000" alt="page_1">
-							<img width="320" height="442" src="http://2.bp.blogspot.com/-EoqBKmNonbk/TpEpML00CGI/AAAAAAAAAtA/pXYmaeUhpnY/001.jpg?imgmax=10000" alt="page_2">
-				</div> -->
-
 			</section>
+
+<!--================================= Book Description ============================-->
 			<section id="book_description_wrapper" class="vertical layout flex">
 				<div id="book_description_content">
 					<content></content>
 				</div>
 			</section>
+
 		</section>
 	</template>
 </dom-module>
@@ -124,11 +137,48 @@
 		},
 		ready: function()
 		{
-
+			this.images = [
+				"http://fangirlisms.com/wp-content/uploads/2013/11/attack-on-titan-poster.jpg",
+				"http://2.bp.blogspot.com/-qstAA84knZ4/TpEpJgxgZ5I/AAAAAAAAAs0/uIf-pvdq5Wk/000.jpg?imgmax=10000",
+				"http://2.bp.blogspot.com/-EoqBKmNonbk/TpEpML00CGI/AAAAAAAAAtA/pXYmaeUhpnY/001.jpg?imgmax=10000",
+				"http://2.bp.blogspot.com/-_E0yUVbgkkM/TpEpPzBgixI/AAAAAAAAAtM/R1dxInZ0XIc/002.jpg?imgmax=10000"
+			];
+			this.cover = "http://fangirlisms.com/wp-content/uploads/2013/11/attack-on-titan-poster.jpg";
 		},
-		animateFlip: function()
+		attached: function()
 		{
-
+			this.async(function(){
+				this.showCover();
+				this.$.book_description_content.classList.add('no-display');
+			}, 1);
+		},
+		_imageClickHandler(e)
+		{
+			this.displayImage(this.images.indexOf(e.target.src)+1);
+		},
+		displayImage: function(index)
+		{
+			if(index < 0 || typeof index !== 'number')
+			{
+				index = 0;
+			}
+			var el = document.getElementsByClassName('book_image');
+			index = index >= el.length ? 0 : index;
+			for(var i = 0; i < el.length; i++)
+			{
+				if(i === index)
+				{
+					el[i].classList.remove('no-display');
+				}
+				else
+				{
+					el[i].classList.add('no-display');
+				}
+			}
+		},
+		showCover: function()
+		{
+			this.displayImage(this.images.indexOf(this.cover));
 		}
 	});
 </script>
