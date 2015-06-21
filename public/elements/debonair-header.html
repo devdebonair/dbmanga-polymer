@@ -35,14 +35,14 @@
 		}
 
 		#right {
-			max-width: 100%;
+			max-width: 50%;
 		}
 	</style>
 	<template>
 		<paper-header-panel id="header">
 			<paper-toolbar id="header-toolbar">
 				<section id="left" class="toggable">
-					<paper-icon-button icon="menu"></paper-icon-button>
+					<paper-icon-button icon="menu" class="icon"></paper-icon-button>
 				</section>
 
 				<section id="center" class="flex toggable">
@@ -52,14 +52,11 @@
 				</section>
 
 				<section id="right">
-					<debonair-search 
-						id="header-search-bar"
-						on-search-changed="_searchHandler">
-					</debonair-search>
+					<paper-icon-button icon="search" class="icon"></paper-icon-button>
 				</section>
 			</paper-toolbar>
 
-			<content class="fit"></content>
+			<content></content>
 		</paper-header-panel>
 
 	</template>

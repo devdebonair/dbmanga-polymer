@@ -2,13 +2,41 @@
 	<style>
 		#wrapper {
 			height: 442px;
-			width: 320px;
-			border-radius: 10px;
-			margin: 5%;					/*Temporary padding to see element*/
-			border: solid thin #DBE1D2;
-			box-shadow: 2px 2px 5px #A7ADA1;
+			background-color: #141414;
+			color: #e0e0e0;
 		}
 
+		#wrapper {
+			transition: 0.4s;
+		}
+		.deactivate {
+			width: 320px;
+		}
+
+		.activate {
+			width: 100%;
+		}
+
+		.no-display {
+			display: none;
+		}
+
+		.info-button {
+			color: white;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			z-index: 99;
+			background-color: transparent;
+			cursor: pointer;
+			padding: 0 5px 5px 0;
+		}
+
+		/******************************************************************
+		*
+		*	Book Content
+		*
+		*******************************************************************/
 		#book_description_wrapper {
 			height: 100%; 
 		}
@@ -29,92 +57,25 @@
 			padding-bottom: 5px;
 			margin-bottom: 0%;
 			text-align: center;
-			color: #1C1E2E;
+			color: #eceff1;
 		}
 
 		::content .book_summary p {
 			line-height: 30px;
-		}
-
-		/* entire container, keeps perspective */
-		.flip-container {
-			perspective: 1000;
-		}
-
-		/* flip the pane when hovered */
-		.flipper, .flip-container.hover .flipper {
-			transform: rotateY(180deg);
-		}
-
-		.flip-container, .front, .back {
-			width: 320px;
-			height: 480px;
-		}
-
-		/* flip speed goes here */
-		.flipper {
-			transition: 0.6s;
-			transform-style: preserve-3d;
-
-			position: relative;
-		}
-
-		/* hide back of pane during swap */
-		.front, .back, .book_image {
-			backface-visibility: hidden;
-
-			position: absolute;
-			top: 0;
-			left: 0;
-		}
-
-		/* front pane, placed above back */
-		.front {
-			z-index: 2;
-			/* for firefox 31 */
-			transform: rotateY(0deg);
-		}
-
-		/* back, initially hidden pane */
-		.back, .book_image {
-			transform: rotateY(180deg);
-		}
-
-		.no-display {
-			display: none;
-		}
-
-		.info-button {
-			color: white;
-			position: absolute;
-			bottom: 0;
-			right: 0;
-			z-index: 99;
-			background-color: transparent;
-			cursor: pointer;
-			padding: 0 5px 5px 0;
-		}
-
-		.book_image > img {
-			border-radius: 10px;
+			word-spacing: 2px;
 		}
 	</style>
 	<template>
 
-		<section id="wrapper" class="horizontal layout flex">
+		<section id="wrapper" class="horizontal layout flex" on-mouseover="activate" on-mouseout="deactivate">
 
 <!--================================= Book Images ================================-->
 			<section id="book_images">
-				<div class="flip-container">
-					<div class="flipper">
-						<template is="dom-repeat" items="{{images}}">
-							<div class="book_image">
-								<img height="442" width="320" src="{{item}}" on-click="_imageClickHandler">
-				<span class="info-button">READ</span>
-							</div>
-						</template>
+				<template is="dom-repeat" items="{{images}}">
+					<div class="book_image">
+						<img height="442" width="320" src="{{item}}" on-click="_imageClickHandler">
 					</div>
-				</div>
+				</template>
 			</section>
 
 <!--================================= Book Description ============================-->
@@ -132,8 +93,13 @@
 	Polymer({
 		is: "debonair-book",
 		properties: {
-			cover: String,
-			images: Array
+			cover: 		String,
+			images: 	Array,
+			activated: 	{
+				type: Boolean,
+				observer: 'activatedChanged',
+				value: false
+			}
 		},
 		ready: function()
 		{
@@ -144,17 +110,10 @@
 				"http://2.bp.blogspot.com/-_E0yUVbgkkM/TpEpPzBgixI/AAAAAAAAAtM/R1dxInZ0XIc/002.jpg?imgmax=10000"
 			];
 			this.cover = "http://fangirlisms.com/wp-content/uploads/2013/11/attack-on-titan-poster.jpg";
-		},
-		attached: function()
-		{
 			this.async(function(){
 				this.showCover();
 				this.$.book_description_content.classList.add('no-display');
-			}, 1);
-		},
-		_imageClickHandler(e)
-		{
-			this.displayImage(this.images.indexOf(e.target.src)+1);
+			}, 2);
 		},
 		displayImage: function(index)
 		{
@@ -179,6 +138,35 @@
 		showCover: function()
 		{
 			this.displayImage(this.images.indexOf(this.cover));
+		},
+		_imageClickHandler: function(e)
+		{
+			this.activated = true;
+			var index = this.images.indexOf(e.target.src) + 1;
+			console.log(index);
+			this.displayImage(index);
+		},
+		activate: function()
+		{
+			this.activated = true;
+		},
+		deactivate: function()
+		{
+			this.activated = false;
+		},
+		activatedChanged: function(newValue)
+		{
+			if(newValue)
+			{
+				this.$.wrapper.classList.remove('deactivate');
+				this.$.wrapper.classList.add('activate');
+				this.$.book_description_content.classList.remove('no-display');
+				return;
+			}
+			this.$.wrapper.classList.remove('activate');
+			this.$.wrapper.classList.add('deactivate');
+			this.$.book_description_content.classList.add('no-display');
+			return;
 		}
 	});
 </script>
