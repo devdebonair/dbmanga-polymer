@@ -5,18 +5,10 @@
 	<style></style>
 	<template>
 		<debonair-header>
-			<debonair-book>
-				<section class="book_wrapper">
-					<div class="book_title_wrapper">
-						<h1 class="book_title">SHINGEKI NO KYOJIN</h1>
-					</div>
-					<section class="book_summary_container">
-						<div class="book_summary">
-							<p>Over one hundred years prior to the beginning of the story, giant humanoid creatures called Titans (巨人 Kyojin) suddenly appeared and nearly wiped out humanity, devouring them without remorse or reason. What remains of humanity now resides within three enormous concentric walls: the outermost is Wall Maria (ウォール・マリア Wōru Maria); the middle wall is Wall Rose (ウォール・ローゼ Wōru Rōze, pronounced like rosé) and the innermost is Wall Sina (ウォール・シーナ Wōru Shīna, alt. "Wall Sina"). Inside these walls, humanity has lived in peace for one hundred years; many people growing up without ever having seen a Titan. This all changes when one day, a giant 60-meter (200 ft)-tall Titan mysteriously appears after a strike of lightning and breaches the outer wall of the Shiganshina district, a town at Wall Maria, allowing the smaller Titans to invade the district. An Armored Titan smashes clean through Wall Maria, forcing mankind to abandon the land between Wall Maria and Wall Rose, evacuating the remaining population into the inner districts. The sudden influx of population causes turmoil and famine.</p>
-						</div>
-					</section>
-				</section>
-			</debonair-book>
+			<section class="horizontal layout">
+				<debonair-book cover="{{naruto.cover}}" title="{{naruto.title}}" summary="{{naruto.summary}}" images="{{naruto.images}}"></debonair-book>
+				<debonair-book cover="{{attack.cover}}" title="{{attack.title}}" summary="{{attack.summary}}" images="{{attack.images}}"></debonair-book>
+			</section>
 		</debonair-header>
 	</template>
 </dom-module>
@@ -26,6 +18,30 @@
 		is: "debonair-app",
 		ready: function()
 		{
+			this.attack = {
+				title: 		"SHINGEKI NO KYOJIN",
+				summary: 	"Over one hundred years prior to the beginning of the story, giant humanoid creatures called Titans (巨人 Kyojin) suddenly appeared and nearly wiped out humanity, devouring them without remorse or reason. What remains of humanity now resides within three enormous concentric walls: the outermost is Wall Maria (ウォール・マリア Wōru Maria); the middle wall is Wall Rose (ウォール・ローゼ Wōru Rōze, pronounced like rosé) and the innermost is Wall Sina (ウォール・シーナ Wōru Shīna, alt. 'Wall Sina'). Inside these walls, humanity has lived in peace for one hundred years; many people growing up without ever having seen a Titan. This all changes when one day, a giant 60-meter (200 ft)-tall Titan mysteriously appears after a strike of lightning and breaches the outer wall of the Shiganshina district, a town at Wall Maria, allowing the smaller Titans to invade the district. An Armored Titan smashes clean through Wall Maria, forcing mankind to abandon the land between Wall Maria and Wall Rose, evacuating the remaining population into the inner districts. The sudden influx of population causes turmoil and famine.",
+				cover: "http://fangirlisms.com/wp-content/uploads/2013/11/attack-on-titan-poster.jpg",
+				images: [
+					"http://fangirlisms.com/wp-content/uploads/2013/11/attack-on-titan-poster.jpg",
+					"http://2.bp.blogspot.com/-qstAA84knZ4/TpEpJgxgZ5I/AAAAAAAAAs0/uIf-pvdq5Wk/000.jpg?imgmax=10000",
+					"http://2.bp.blogspot.com/-EoqBKmNonbk/TpEpML00CGI/AAAAAAAAAtA/pXYmaeUhpnY/001.jpg?imgmax=10000",
+					"http://2.bp.blogspot.com/-_E0yUVbgkkM/TpEpPzBgixI/AAAAAAAAAtM/R1dxInZ0XIc/002.jpg?imgmax=10000"
+				]
+			};
+
+			this.naruto = {
+				title: "NARUTO",
+				summary: "Twelve years before the events at the focus of the series, the nine-tailed demon fox attacked Konohagakure. It was a powerful demon fox; a single swing of one of its nine tails would raise tsunamis and flatten mountains. It raised chaos and slaughtered many people, until the leader of the Leaf Village - the Fourth Hokage - defeated it by sacrificing his own life to seal the demon inside a newly-born child. That child's name was Naruto Uzumaki.",
+				cover: "http://mangadoom.co/wp-content/manga/12804/2/50.jpg",
+				images: [
+					"http://mangadoom.co/wp-content/manga/12804/2/50.jpg",
+					"http://2.bp.blogspot.com/-EWKHWi7shr8/VTkR5XPhaVI/AAAAAAACNvQ/QakymUuCx3s/002.jpg?imgmax=10000",
+					"http://2.bp.blogspot.com/-EhwgOSic_FA/VTkR8KYQ4GI/AAAAAAACNvg/MKLKptCwbpU/004.jpg?imgmax=10000",
+					"http://2.bp.blogspot.com/-DHQhyKv7qPQ/VTkR-SX2vXI/AAAAAAACNv0/Ghu6rY8-KE4/007.png?imgmax=10000",
+					"http://2.bp.blogspot.com/-WAfqWGdABso/VTkR_AOpAZI/AAAAAAACNv8/A9IidQzBKmA/008.png?imgmax=10000"
+				]
+			}
 		}
 	});
 </script>

@@ -1,14 +1,23 @@
+<link rel="import" type="text/html" href="/lib/iron-icons/iron-icons.html">
+<link rel="import" type="text/html" href="/lib/iron-iconset-svg/iron-iconset-svg.html">
+<link rel="import" type="text/html" href="/lib/paper-icon-button/paper-icon-button.html">
+
 <dom-module id="debonair-book">
 	<style>
+		#book_images {
+			cursor: pointer;
+		}
 		#wrapper {
 			height: 442px;
 			background-color: #141414;
 			color: #e0e0e0;
+			position: relative;
 		}
 
 		#wrapper {
 			transition: 0.4s;
 		}
+
 		.deactivate {
 			width: 320px;
 		}
@@ -32,6 +41,13 @@
 			padding: 0 5px 5px 0;
 		}
 
+		.close_button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 15px 15px 0 0;
+			color: #FFF;
+		}
 		/******************************************************************
 		*
 		*	Book Content
@@ -50,7 +66,7 @@
 			height: 83%;
 		}
 
-		::content .book_title {
+		.book_title {
 			font-size: 24px;
 			letter-spacing: 5px;
 			font-weight: 400;
@@ -60,15 +76,15 @@
 			color: #eceff1;
 		}
 
-		::content .book_summary p {
+		.book_summary p {
 			line-height: 30px;
 			word-spacing: 2px;
 		}
 	</style>
 	<template>
 
-		<section id="wrapper" class="horizontal layout flex" on-mouseover="activate" on-mouseout="deactivate">
-
+		<section id="wrapper" class="horizontal layout flex">
+			<paper-icon-button id="close" icon="close" on-click="deactivate" class="close_button"></paper-icon-button>
 <!--================================= Book Images ================================-->
 			<section id="book_images">
 				<template is="dom-repeat" items="{{images}}">
@@ -81,7 +97,17 @@
 <!--================================= Book Description ============================-->
 			<section id="book_description_wrapper" class="vertical layout flex">
 				<div id="book_description_content">
-					<content></content>
+					
+					<div class="book_title_wrapper">
+						<h1 class="book_title">{{title}}</h1>
+					</div>
+					
+					<section class="book_summary_container">
+						<div class="book_summary">
+							<p>{{summary}}</p>
+						</div>
+					</section>
+
 				</div>
 			</section>
 
@@ -95,6 +121,8 @@
 		properties: {
 			cover: 		String,
 			images: 	Array,
+			title: 		String,
+			summary: 	String, 
 			activated: 	{
 				type: Boolean,
 				observer: 'activatedChanged',
@@ -110,10 +138,53 @@
 				"http://2.bp.blogspot.com/-_E0yUVbgkkM/TpEpPzBgixI/AAAAAAAAAtM/R1dxInZ0XIc/002.jpg?imgmax=10000"
 			];
 			this.cover = "http://fangirlisms.com/wp-content/uploads/2013/11/attack-on-titan-poster.jpg";
+			
 			this.async(function(){
 				this.showCover();
 				this.$.book_description_content.classList.add('no-display');
-			}, 2);
+			}, 1);
+		},
+		activate: function()
+		{
+			this.activated = true;
+		},
+		deactivate: function()
+		{
+			this.activated = false;
+			this.showCover();
+		},
+		toggleActivate: function()
+		{
+			this.activated = !this.activated;
+		},
+		showCover: function()
+		{
+			this.displayImage(this.images.indexOf(this.cover));
+		},
+		_imageClickHandler: function(e)
+		{
+			if(this.activated)
+			{
+				var index = this.images.indexOf(e.target.src) + 1;
+				this.displayImage(index);
+			}
+			this.activated = true;
+		},
+		activatedChanged: function(newValue)
+		{
+			if(newValue)
+			{
+				this.$.wrapper.classList.remove('deactivate');
+				this.$.wrapper.classList.add('activate');
+				this.$.book_description_content.classList.remove('no-display');
+				this.$.close.classList.remove('no-display');
+				return;
+			}
+			this.$.wrapper.classList.remove('activate');
+			this.$.wrapper.classList.add('deactivate');
+			this.$.book_description_content.classList.add('no-display');
+			this.$.close.classList.add('no-display');
+			return;
 		},
 		displayImage: function(index)
 		{
@@ -121,7 +192,7 @@
 			{
 				index = 0;
 			}
-			var el = document.getElementsByClassName('book_image');
+			var el = this.$.wrapper.getElementsByClassName('book_image');
 			index = index >= el.length ? 0 : index;
 			for(var i = 0; i < el.length; i++)
 			{
@@ -134,39 +205,6 @@
 					el[i].classList.add('no-display');
 				}
 			}
-		},
-		showCover: function()
-		{
-			this.displayImage(this.images.indexOf(this.cover));
-		},
-		_imageClickHandler: function(e)
-		{
-			this.activated = true;
-			var index = this.images.indexOf(e.target.src) + 1;
-			console.log(index);
-			this.displayImage(index);
-		},
-		activate: function()
-		{
-			this.activated = true;
-		},
-		deactivate: function()
-		{
-			this.activated = false;
-		},
-		activatedChanged: function(newValue)
-		{
-			if(newValue)
-			{
-				this.$.wrapper.classList.remove('deactivate');
-				this.$.wrapper.classList.add('activate');
-				this.$.book_description_content.classList.remove('no-display');
-				return;
-			}
-			this.$.wrapper.classList.remove('activate');
-			this.$.wrapper.classList.add('deactivate');
-			this.$.book_description_content.classList.add('no-display');
-			return;
 		}
 	});
 </script>
