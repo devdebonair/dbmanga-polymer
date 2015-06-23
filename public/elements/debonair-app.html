@@ -6,28 +6,45 @@
 		#books {
 			width: 100vw;
 		}
+
+		#news {
+			display: table;
+			white-space: nowrap;
+			width: 100vw;
+		}
+
+		#news div {
+			display: table-cell;
+		}
+
+		#news img {
+			min-width: 100%;
+			max-width: 100%;
+			min-height: 400px;
+			max-height: 400px;
+		}
+
+		@media(max-width: 500px) {
+			#news {
+				display: none;
+			}
+		}
 	</style>
 	<template>
+		<section id="news">
+			<div>
+				<img src="http://1.bp.blogspot.com/-g8U8FKvgWYk/VFXPDlpYvHI/AAAAAAABT74/TyPWxiA7Fj8/s1600/the_last_naruto_the_movie.jpg" alt="">
+			</div>
+			<div>
+				<img src="http://3.bp.blogspot.com/-FmNwNn-3lR8/VNOT9_Ld1_I/AAAAAAAALAk/WThj5Cooss8/s1600/Young_Naruto.jpg" alt="">
+			</div>
+			<div>
+				<img src="http://fc05.deviantart.net/fs70/i/2013/027/4/3/monkey_d__luffy_by_ryuzakineobgd-d5swwa6.png" alt="">
+			</div>
+		</section>
 		<debonair-header>
 			<section id="books" class="horizontal wrap layout">
-				<debonair-book cover="{{naruto.cover}}" title="{{naruto.title}}" summary="{{naruto.summary}}" images="{{naruto.images}}"></debonair-book>
-				<debonair-book cover="{{attack.cover}}" title="{{attack.title}}" summary="{{attack.summary}}" images="{{attack.images}}"></debonair-book>
-				<debonair-book cover="{{dragon.cover}}" title="{{dragon.title}}" summary="{{dragon.summary}}" images="{{dragon.images}}"></debonair-book>
-				<debonair-book cover="{{naruto.cover}}" title="{{naruto.title}}" summary="{{naruto.summary}}" images="{{naruto.images}}"></debonair-book>
-				<debonair-book cover="{{attack.cover}}" title="{{attack.title}}" summary="{{attack.summary}}" images="{{attack.images}}"></debonair-book>
-				<debonair-book cover="{{dragon.cover}}" title="{{dragon.title}}" summary="{{dragon.summary}}" images="{{dragon.images}}"></debonair-book>
-				<debonair-book cover="{{naruto.cover}}" title="{{naruto.title}}" summary="{{naruto.summary}}" images="{{naruto.images}}"></debonair-book>
-				<debonair-book cover="{{attack.cover}}" title="{{attack.title}}" summary="{{attack.summary}}" images="{{attack.images}}"></debonair-book>
-				<debonair-book cover="{{dragon.cover}}" title="{{dragon.title}}" summary="{{dragon.summary}}" images="{{dragon.images}}"></debonair-book>
-				<debonair-book cover="{{naruto.cover}}" title="{{naruto.title}}" summary="{{naruto.summary}}" images="{{naruto.images}}"></debonair-book>
-				<debonair-book cover="{{attack.cover}}" title="{{attack.title}}" summary="{{attack.summary}}" images="{{attack.images}}"></debonair-book>
-				<debonair-book cover="{{dragon.cover}}" title="{{dragon.title}}" summary="{{dragon.summary}}" images="{{dragon.images}}"></debonair-book>
-				<debonair-book cover="{{naruto.cover}}" title="{{naruto.title}}" summary="{{naruto.summary}}" images="{{naruto.images}}"></debonair-book>
-				<debonair-book cover="{{attack.cover}}" title="{{attack.title}}" summary="{{attack.summary}}" images="{{attack.images}}"></debonair-book>
-				<debonair-book cover="{{dragon.cover}}" title="{{dragon.title}}" summary="{{dragon.summary}}" images="{{dragon.images}}"></debonair-book>
-				<debonair-book cover="{{naruto.cover}}" title="{{naruto.title}}" summary="{{naruto.summary}}" images="{{naruto.images}}"></debonair-book>
-				<debonair-book cover="{{attack.cover}}" title="{{attack.title}}" summary="{{attack.summary}}" images="{{attack.images}}"></debonair-book>
-				<debonair-book cover="{{dragon.cover}}" title="{{dragon.title}}" summary="{{dragon.summary}}" images="{{dragon.images}}"></debonair-book>
+				<debonair-book cover="{{naruto.cover}}" title="{{naruto.title}}" summary="{{naruto.summary}}" images="{{naruto.images}}" activated disabled></debonair-book>
 			</section>
 		</debonair-header>
 	</template>
@@ -75,10 +92,6 @@
 					"http://i.imgur.com/vrHy5.jpg"
 				]
 			}
-		},
-		moveFirst: function()
-		{
-
 		}
 	});
 </script>

@@ -9,7 +9,7 @@
 		}
 		#wrapper {
 			height: 442px;
-			background-color: #141414;
+			background-color: #212121;
 			color: #e0e0e0;
 			position: relative;
 		}
@@ -127,13 +127,20 @@
 				type: Boolean,
 				observer: 'activatedChanged',
 				value: false
+			},
+			disabled: {
+				type: Boolean,
+				value: false
 			}
 		},
 		ready: function()
 		{	
 			this.async(function(){
 				this.showCover();
-				this.$.book_description_content.classList.add('no-display');
+				if(this.disabled)
+				{
+					this.$.close.classList.add('no-display');
+				}
 			}, 1);
 		},
 		activate: function()
