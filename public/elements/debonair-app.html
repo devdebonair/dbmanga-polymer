@@ -29,6 +29,22 @@
 				display: none;
 			}
 		}
+
+		.section-title-wrapper {
+			padding: 35px;
+		}
+
+		.section-title {
+			font-weight: 300;
+			font-size: 32px;
+			letter-spacing: 5px;
+			text-transform: uppercase;
+		}
+
+		#manga_releases {
+			padding-left: 85px;
+		}
+
 	</style>
 	<template>
 		<section id="news">
@@ -45,6 +61,16 @@
 		<debonair-header>
 			<section id="books" class="horizontal wrap layout">
 				<debonair-book cover="{{naruto.cover}}" title="{{naruto.title}}" summary="{{naruto.summary}}" images="{{naruto.images}}" activated disabled></debonair-book>
+			</section>
+
+			<section class="vertical layout">
+
+				<section class="section-title-wrapper">
+					<span class="section-title">NEW RELEASES</span>
+				</section>
+				<section id="manga_releases" class="horizontal layout">
+					<debonair-book cover="{{attack.cover}}" title="{{attack.title}}" summary="{{attack.summary}}" images="{{attack.images}}"></debonair-book>
+				</section>
 			</section>
 		</debonair-header>
 	</template>
