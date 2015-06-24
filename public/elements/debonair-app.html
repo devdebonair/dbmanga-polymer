@@ -18,9 +18,7 @@
 		}
 
 		#news img {
-			min-width: 100%;
 			max-width: 100%;
-			min-height: 400px;
 			max-height: 400px;
 		}
 
@@ -47,30 +45,21 @@
 
 	</style>
 	<template>
-		<section id="news">
-			<div>
-				<img src="http://1.bp.blogspot.com/-g8U8FKvgWYk/VFXPDlpYvHI/AAAAAAABT74/TyPWxiA7Fj8/s1600/the_last_naruto_the_movie.jpg" alt="">
-			</div>
-			<div>
-				<img src="http://3.bp.blogspot.com/-FmNwNn-3lR8/VNOT9_Ld1_I/AAAAAAAALAk/WThj5Cooss8/s1600/Young_Naruto.jpg" alt="">
-			</div>
-			<div>
-				<img src="http://fc05.deviantart.net/fs70/i/2013/027/4/3/monkey_d__luffy_by_ryuzakineobgd-d5swwa6.png" alt="">
-			</div>
-		</section>
 		<debonair-header>
-			<section id="books" class="horizontal wrap layout">
-				<debonair-book cover="{{naruto.cover}}" title="{{naruto.title}}" summary="{{naruto.summary}}" images="{{naruto.images}}" activated disabled></debonair-book>
+
+			<section id="news">
+				<div>
+					<img src="http://1.bp.blogspot.com/-g8U8FKvgWYk/VFXPDlpYvHI/AAAAAAABT74/TyPWxiA7Fj8/s1600/the_last_naruto_the_movie.jpg" alt="">
+				</div>
+				<div>
+					<img src="http://3.bp.blogspot.com/-FmNwNn-3lR8/VNOT9_Ld1_I/AAAAAAAALAk/WThj5Cooss8/s1600/Young_Naruto.jpg" alt="">
+				</div>
+				<div>
+					<img src="http://fc05.deviantart.net/fs70/i/2013/027/4/3/monkey_d__luffy_by_ryuzakineobgd-d5swwa6.png" alt="">
+				</div>
 			</section>
-
 			<section class="vertical layout">
-
-				<section class="section-title-wrapper">
-					<span class="section-title">NEW RELEASES</span>
-				</section>
-				<section id="manga_releases" class="horizontal layout">
-					<debonair-book cover="{{attack.cover}}" title="{{attack.title}}" summary="{{attack.summary}}" images="{{attack.images}}"></debonair-book>
-				</section>
+				
 			</section>
 		</debonair-header>
 	</template>
