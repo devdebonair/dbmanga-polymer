@@ -3,10 +3,6 @@
 
 <dom-module id="debonair-app">
 	<style>
-		#books {
-			width: 100vw;
-		}
-
 		#news {
 			display: table;
 			white-space: nowrap;
@@ -43,6 +39,26 @@
 			padding-left: 85px;
 		}
 
+		#collections section {
+			padding: 2% 0% 2% 2%;
+		}
+
+		#collections h1 {
+			font-weight: 400;
+			letter-spacing: 5px;
+			text-transform: uppercase;
+			opacity: 0.6;
+			font-size: 32px;
+		}
+
+		.book_wrapper {
+			padding-right: 55px;
+		}
+
+		.collections_books {
+			overflow-x: scroll;
+			overflow-y: hidden;
+		}
 	</style>
 	<template>
 		<debonair-header>
@@ -58,8 +74,79 @@
 					<img src="http://fc05.deviantart.net/fs70/i/2013/027/4/3/monkey_d__luffy_by_ryuzakineobgd-d5swwa6.png" alt="">
 				</div>
 			</section>
-			<section class="vertical layout">
-				
+
+			<section id="collections" class="vertical layout">
+				<section>
+					<h1>Popular</h1>
+					<div class="collections_books horizontal layout">
+						<div class="book_wrapper">
+							<debonair-book title="{{naruto.title}}" summary="{{naruto.summary}}" cover="{{naruto.cover}}" images="{{naruto.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{dragon.title}}" summary="{{dragon.summary}}" cover="{{dragon.cover}}" images="{{dragon.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{attack.title}}" summary="{{attack.summary}}" cover="{{attack.cover}}" images="{{attack.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{naruto.title}}" summary="{{naruto.summary}}" cover="{{naruto.cover}}" images="{{naruto.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{dragon.title}}" summary="{{dragon.summary}}" cover="{{dragon.cover}}" images="{{dragon.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{attack.title}}" summary="{{attack.summary}}" cover="{{attack.cover}}" images="{{attack.images}}"></debonair-book>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h1>New Releases</h1>
+					<div class="collections_books horizontal layout">
+						<div class="book_wrapper">
+							<debonair-book title="{{naruto.title}}" summary="{{naruto.summary}}" cover="{{naruto.cover}}" images="{{naruto.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{dragon.title}}" summary="{{dragon.summary}}" cover="{{dragon.cover}}" images="{{dragon.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{attack.title}}" summary="{{attack.summary}}" cover="{{attack.cover}}" images="{{attack.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{naruto.title}}" summary="{{naruto.summary}}" cover="{{naruto.cover}}" images="{{naruto.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{dragon.title}}" summary="{{dragon.summary}}" cover="{{dragon.cover}}" images="{{dragon.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{attack.title}}" summary="{{attack.summary}}" cover="{{attack.cover}}" images="{{attack.images}}"></debonair-book>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h1>Trending</h1>
+					<div class="collections_books horizontal layout">
+						<div class="book_wrapper">
+							<debonair-book title="{{naruto.title}}" summary="{{naruto.summary}}" cover="{{naruto.cover}}" images="{{naruto.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{dragon.title}}" summary="{{dragon.summary}}" cover="{{dragon.cover}}" images="{{dragon.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{attack.title}}" summary="{{attack.summary}}" cover="{{attack.cover}}" images="{{attack.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{naruto.title}}" summary="{{naruto.summary}}" cover="{{naruto.cover}}" images="{{naruto.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{dragon.title}}" summary="{{dragon.summary}}" cover="{{dragon.cover}}" images="{{dragon.images}}"></debonair-book>
+						</div>
+						<div class="book_wrapper">
+							<debonair-book title="{{attack.title}}" summary="{{attack.summary}}" cover="{{attack.cover}}" images="{{attack.images}}"></debonair-book>
+						</div>
+					</div>
+				</section>
 			</section>
 		</debonair-header>
 	</template>
