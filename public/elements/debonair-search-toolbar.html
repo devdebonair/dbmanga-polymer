@@ -1,0 +1,48 @@
+<link rel="import" type="text/html" href="/elements/debonair-styles.html">
+
+<dom-module id="debonair-search-toolbar">
+	<style>
+		.filters span {
+			padding: 15px 200px 25px 0px;
+			font-size: 20px;
+			color: #340228;
+			opacity: 0.5;
+		}
+
+		#toolbar_content {
+			padding: 50px 0px 0px 25px;
+		}
+
+		#search {
+			border-radius: 50px;
+			border-width: 1px;
+			border-color: #340228;
+			color: #340228;
+			width: 440px;
+			height: 48px;
+		}
+	</style>
+	<template>
+		<section class="vertical layout">
+			<section id="toolbar_content" class="flex">
+				<input id="search" type="search" placeholder="Search...">
+				<div class="filters horizontal layout">
+					<span class="main-color">GENRE</span>
+					<span class="main-color">CHAPTER</span>
+					<span class="main-color">STATUS</span>
+				</div>
+			</section>
+			<hr class="main-color-border">
+		</section>
+	</template>
+</dom-module>
+
+<script type="text/javascript">
+	Polymer({
+		is: "debonair-search-toolbar",
+		ready: function()
+		{
+
+		}
+	});
+</script>
