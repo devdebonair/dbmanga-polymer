@@ -1,38 +1,51 @@
-<link rel="import" type="text/html" href="/elements/debonair-styles.html">
+<link rel="import" type="text/html" href="/lib/paper-toolbar/paper-toolbar.html">
+<link rel="import" type="text/html" href="/lib/iron-icons/hardware-icons.html">
+<link rel="import" type="text/html" href="/lib/iron-iconset/iron-iconset.html">
+<link rel="import" type="text/html" href="/lib/paper-icon-button/paper-icon-button.html">
 
 <dom-module id="debonair-search-toolbar">
 	<style>
-		.filters span {
-			padding: 15px 200px 25px 0px;
+		paper-toolbar {
+			--paper-toolbar-background: #FFF;
+			color: #9A8194;
 			font-size: 20px;
-			color: #340228;
-			opacity: 0.5;
 		}
 
-		#toolbar_content {
-			padding: 50px 0px 0px 25px;
+		.filter_item {
+			padding-right: 2%;
 		}
 
-		#search {
+		.autocomplete, .autocomplete:focus {
+			border-color: #9A8194;
+			font-size: 14px;
+			padding: 10px;
 			border-radius: 50px;
-			border-width: 1px;
-			border-color: #340228;
-			color: #340228;
-			width: 440px;
-			height: 48px;
+			width: 20%;
 		}
+
+		::-webkit-input-placeholder { color:#9A8194; }
+		::-moz-placeholder { color:#9A8194; } /* firefox 19+ */
+		:-ms-input-placeholder { color:#9A8194; } /* ie */
+		input:-moz-placeholder { color:#9A8194; }
+
 	</style>
 	<template>
-		<section class="vertical layout">
-			<section id="toolbar_content" class="flex">
-				<input id="search" type="search" placeholder="Search...">
-				<div class="filters horizontal layout">
-					<span class="main-color">GENRE</span>
-					<span class="main-color">CHAPTER</span>
-					<span class="main-color">STATUS</span>
+		<section class="wrapper">
+			<div class="autocomplete_wrapper">
+				<input class="autocomplete" type="search" placeholder="Search...">
+			</div>
+			<paper-toolbar>
+				<div class="filter_item">
+					<span class="filter_title">GENRE <paper-icon-button icon="hardware:keyboard-arrow-down"></paper-icon-button></span>
 				</div>
-			</section>
-			<hr class="main-color-border">
+				<div class="filter_item">
+					<span class="filter_title">CHAPTERS <paper-icon-button icon="hardware:keyboard-arrow-down"></paper-icon-button></span>
+				</div>
+				<div class="filter_item">
+					<span class="filter_title">STATUS <paper-icon-button icon="hardware:keyboard-arrow-down"></paper-icon-button></span>
+				</div>
+			</paper-toolbar>
+			<hr class="light-pink-border">
 		</section>
 	</template>
 </dom-module>
