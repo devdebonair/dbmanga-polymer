@@ -1,14 +1,12 @@
 <dom-module id="debonair-book">
 	<style>
-		div {
-			width: 200px;
-		}
 		div img {
 			max-width: 100%;
+			min-width: 100%;
 		}
 	</style>
 	<template>
-		<div>
+		<div style$="{{widthStyle}}">
 			<img src="{{url}}">
 		</div>
 	</template>
@@ -21,7 +19,19 @@
 			url: {
 				type: String,
 				value: ''
+			},
+			width: {
+				type: Number,
+				value: 500
+			},
+			widthStyle: {
+				type: String,
+				computed: 'computeWidth(width)'
 			}
+		},
+		computeWidth: function()
+		{
+			return "width: " + this.width + "px;";
 		},
 		ready: function()
 		{

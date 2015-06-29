@@ -1,10 +1,29 @@
 <link rel="import" type="text/html" href="/elements/debonair-search-toolbar.html">
 <link rel="import" type="text/html" href="/elements/debonair-book.html">
-
+<link rel="import" type="text/html" href="/lib/paper-slider/paper-slider.html">
 <dom-module id="debonair-app">
-	<style></style>
+	<style>
+	paper-slider {
+		--paper-slider-bar-color: ##7c2389;
+		--paper-slider-active-color: #7c2389;
+		--paper-slider-knob-color: #7c2389;
+		--paper-slider-pin-color: #7c2389;
+		--paper-slider-font-color: #fff;
+		--paper-slider-secondary-color: #7c2389;
+		--paper-slider-disabled-active-color: #7c2389;
+		--paper-slider-disabled-secondary-color: #7c2389;
+
+
+		--paper-slider-bar-color: #7c2389;
+		--paper-slider-knob-color: #7c2389;
+		--paper-slider-disabled-active-color: #7c2389;
+	}
+	</style>
 	<template>
 		<debonair-search-toolbar></debonair-search-toolbar>
+		<div class="flex">
+			<paper-slider id="slider" min="50" max="800" on-value-change="changeWidth" pin editable expand></paper-slider>
+		</div>
 		<debonair-book url="{{image}}" width="{{width}}"></debonair-book>
 		<debonair-book url="{{imgr}}" width="{{width}}"></debonair-book>
 	</template>
@@ -15,9 +34,13 @@
 		is: "debonair-app",
 		ready: function()
 		{
-			this.width = 50;
 			this.image = 'http://mcd.iosphe.re/n/15/1/front/a/';
 			this.imgr = 'http://mcd.iosphe.re/n/15/66/front/a/';
+			this.width = 100;
+		},
+		changeWidth: function(value)
+		{
+			this.width = this.$.slider.value;
 		}
 	});
 </script>
