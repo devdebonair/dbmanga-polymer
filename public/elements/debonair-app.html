@@ -1,10 +1,12 @@
-<link rel="import" type="text/html" href="/elements/debonair-styles.html">
 <link rel="import" type="text/html" href="/elements/debonair-search-toolbar.html">
+<link rel="import" type="text/html" href="/elements/debonair-book.html">
 
 <dom-module id="debonair-app">
 	<style></style>
 	<template>
 		<debonair-search-toolbar></debonair-search-toolbar>
+		<debonair-book url="{{image}}" width="{{width}}"></debonair-book>
+		<debonair-book url="{{imgr}}" width="{{width}}"></debonair-book>
 	</template>
 </dom-module>
 
@@ -13,7 +15,9 @@
 		is: "debonair-app",
 		ready: function()
 		{
-
+			this.width = 50;
+			this.image = 'http://mcd.iosphe.re/n/15/1/front/a/';
+			this.imgr = 'http://mcd.iosphe.re/n/15/66/front/a/';
 		}
 	});
 </script>
