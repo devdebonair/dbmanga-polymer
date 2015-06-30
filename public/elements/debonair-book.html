@@ -31,15 +31,16 @@
 			widthStyle: {
 				type: String,
 				computed: 'computeWidth(width)'
-			}
+			},
+			title: String,
+			genres: Array,
+			length: Number,
+			status: String,
+			author: String
 		},
 		computeWidth: function()
 		{
 			return "width: " + this.width + "px;";
-		},
-		ready: function()
-		{
-
 		}
 	});
 </script>
