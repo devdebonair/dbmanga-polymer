@@ -30,21 +30,11 @@
 	Polymer({
 		is: "debonair-directory",
 		properties: {
-			pattern: {
-				type: String,
-				value: '',
-				observer: '_patternChanged'
-			}
-		},
-		_patternChanged: function(val, old_val)
-		{
-			console.log(val);
+			pattern: String
 		},
 		ready: function()
 		{
-			setTimeout(function(){
-				this.pattern = "na";
-			}.bind(this), 5000);
+			
 		}
 	});
 </script>
