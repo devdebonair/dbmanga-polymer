@@ -603,9 +603,9 @@
 		},
 		_patternChanged: function(new_pattern)
 		{
-			this.filter(new_pattern);
+			this._filterTitle(new_pattern);
 		},
-		filter: function(pattern)
+		_filterTitle: function(pattern)
 		{
 			var books = Polymer.dom(this.root).querySelectorAll('.book');
 			var regex = new RegExp(pattern, "i");
@@ -638,7 +638,6 @@
 				status: "complete",
 				author: "Masahi Kishimoto"
 			};
-
 			this.souma = {
 				title: "Shokugeki no Souma",
 				genres: ['romance', 'school', 'drama'],
