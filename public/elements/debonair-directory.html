@@ -1,0 +1,50 @@
+<link rel="import" type="text/html" href="/elements/debonair-search-toolbar.html">
+<link rel="import" type="text/html" href="/elements/debonair-book-collection.html">
+
+<dom-module id="debonair-directory">
+	<style>
+		#book_view {
+			padding: 180px 30px 0px 60px;
+			background-color: #fff;
+		}
+
+		#tool_bar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			background-color: #fff;
+		}
+	</style>
+	<template>
+		<section id="tool_bar" class="flex">
+			<debonair-search-toolbar pattern="{{pattern}}"></debonair-search-toolbar>
+		</section>
+		<section id="book_view">
+			<debonair-book-collection pattern="{{pattern}}"></debonair-book-collection>
+		</section>
+	</template>
+</dom-module>
+
+<script type="text/javascript">
+	Polymer({
+		is: "debonair-directory",
+		properties: {
+			pattern: {
+				type: String,
+				value: '',
+				observer: '_patternChanged'
+			}
+		},
+		_patternChanged: function(val, old_val)
+		{
+			console.log(val);
+		},
+		ready: function()
+		{
+			setTimeout(function(){
+				this.pattern = "na";
+			}.bind(this), 5000);
+		}
+	});
+</script>

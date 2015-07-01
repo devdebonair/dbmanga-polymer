@@ -4,6 +4,7 @@
 <link rel="import" type="text/html" href="/lib/paper-icon-button/paper-icon-button.html">
 <link rel="import" type="text/html" href="/lib/paper-menu/paper-menu.html">
 <link rel="import" type="text/html" href="/lib/paper-item/paper-item.html">
+<link rel="import" type="text/html" href="/lib/iron-input/iron-input.html">
 
 <dom-module id="debonair-search-toolbar">
 	<style>
@@ -52,7 +53,7 @@
 		<section class="wrapper flex">
 			<section class="content">
 				<div class="autocomplete_wrapper">
-					<input class="autocomplete" type="search" placeholder="Search...">
+					<input class="autocomplete" is="iron-input" bind-value="{{pattern}}" type="search" placeholder="Search...">
 				</div>
 				<paper-toolbar>
 					<div class="filter_item">
@@ -74,6 +75,9 @@
 <script type="text/javascript">
 	Polymer({
 		is: "debonair-search-toolbar",
+		properties: {
+			pattern: String
+		},
 		ready: function()
 		{
 

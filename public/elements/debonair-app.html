@@ -1,28 +1,9 @@
-<link rel="import" type="text/html" href="/elements/debonair-search-toolbar.html">
-<link rel="import" type="text/html" href="/elements/debonair-book-collection.html">
+<link rel="import" type="text/html" href="/elements/debonair-directory.html">
 
 <dom-module id="debonair-app">
-	<style>
-		#book_view {
-			padding: 180px 30px 0px 60px;
-			background-color: #fff;
-		}
-
-		#tool_bar {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			background-color: #fff;
-		}
-	</style>
+	<style></style>
 	<template>
-		<section id="tool_bar" class="flex">
-			<debonair-search-toolbar></debonair-search-toolbar>
-		</section>
-		<section id="book_view">
-			<debonair-book-collection></debonair-book-collection>
-		</section>
+		<debonair-directory></debonair-directory>
 	</template>
 </dom-module>
 
@@ -31,25 +12,6 @@
 		is: "debonair-app",
 		ready: function()
 		{
-			this.image = 'http://mcd.iosphe.re/n/15/1/front/a/';
-			this.imgr = 'http://mcd.iosphe.re/n/15/66/front/a/';
-			this.width = 100;
-
-			this.naruto = {
-				title: "Naruto - The Seventh Hokage",
-				genres: ['action', 'comedy', 'shounen'],
-				length: 9,
-				status: "complete",
-				author: "Masahi Kishimoto"
-			};
-
-			this.souma = {
-				title: "Shokugeki no Souma",
-				genres: ['romance', 'school', 'drama'],
-				length: 124,
-				status: "ongoing",
-				author: " TSUKUDA Yuuto"
-			};			
 		}
 	});
 </script>
