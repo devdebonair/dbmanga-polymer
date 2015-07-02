@@ -1,5 +1,6 @@
 <link rel="import" type="text/html" href="/elements/debonair-search-toolbar.html">
 <link rel="import" type="text/html" href="/elements/debonair-book-collection.html">
+<link rel="import" type="text/html" href="/lib/iron-ajax/iron-ajax.html">
 
 <dom-module id="debonair-directory">
 	<style>
@@ -17,11 +18,21 @@
 		}
 	</style>
 	<template>
+		<iron-ajax
+			id="ajax"
+			url="/api/v1/manga/search"
+			params='{{params}}'
+			method="GET"
+			handle-as="json"
+			on-response="loadBooks"
+			debounce-duration="300">
+		</iron-ajax>
+
 		<section id="tool_bar" class="flex">
-			<debonair-search-toolbar pattern="{{pattern}}"></debonair-search-toolbar>
+			<debonair-search-toolbar pattern="{{filteredTitle}}"></debonair-search-toolbar>
 		</section>
 		<section id="book_view">
-			<debonair-book-collection id="collection" pattern="{{pattern}}"></debonair-book-collection>
+			<debonair-book-collection id="collection" pattern="{{pattern}}" books="{{books}}"></debonair-book-collection>
 		</section>
 	</template>
 </dom-module>
@@ -30,10 +41,58 @@
 	Polymer({
 		is: "debonair-directory",
 		properties: {
-			pattern: String
+			filteredGenres: Array,
+			filteredTitle: String,
+			filteredStatus: String,
+			filteredAuthor: String,
+			pattern: String,
+			books: Array,
+			params: {
+				type: String,
+				computed: 'computeParams(filteredGenres, filteredTitle, filteredAuthor, filteredStatus)',
+				observer: 'paramsChanged'
+			}
+		},
+		paramsChanged: function()
+		{
+			if(this.filteredTitle.length !== 3)
+			{
+				return;
+			}
+			this.$.ajax.generateRequest();
+		},
+		loadBooks: function(data)
+		{
+			var response = data.detail.response;
+			this.books = response.map(function(element){
+				return {
+					title: element.title,
+					author: element.author,
+					cover: element.coverUrl,
+					genres: element.genres,
+					length: element.numOfChapters,
+					status: element.status
+				};
+			});
+			console.log(this.books);
+		},
+		computeParams: function(genres, title, author, status)
+		{
+			return JSON.stringify({
+				title: title,
+				genres: genres.join('+'),
+				author: author,
+				status: status
+			});
 		},
 		ready: function()
 		{
+			setTimeout(function(){
+				this.filteredTitle = 'Nar';
+				this.filteredGenres = ['school'];
+				this.filteredStatus = 'ongoing';
+				this.filteredAuthor = 'kishi';
+			}.bind(this), 3000);
 		}
 	});
 </script>
