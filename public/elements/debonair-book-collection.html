@@ -695,6 +695,19 @@
 				books[i].parentNode.style.display = "block";
 			}
 		},
+		_filterRange: function(min, max)
+		{
+			var books = Polymer.dom(this.root).querySelectorAll('.book');
+			for(var i = 0; i < books.length; i++)
+			{
+				if(books[i].length <= max && books[i].length >= min)
+				{
+					books[i].parentNode.style.display = 'block';
+					continue;
+				}
+				books[i].parentNode.style.display = 'none';
+			}	
+		},
 		displayAll: function()
 		{
 			var books = Polymer.dom(this.root).querySelectorAll('.book');
@@ -702,6 +715,14 @@
 			{
 				books[i].parentNode.style.display = 'block';
 			}
+		},
+		hideAll: function()
+		{
+			var books = Polymer.dom(this.root).querySelectorAll('.book');
+			for(var i = 0; i < books.length; i++)
+			{
+				books[i].parentNode.style.display = 'none';
+			}	
 		},
 		ready: function()
 		{
