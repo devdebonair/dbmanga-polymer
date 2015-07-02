@@ -32,7 +32,7 @@
 			<debonair-search-toolbar pattern="{{filteredTitle}}"></debonair-search-toolbar>
 		</section>
 		<section id="book_view">
-			<debonair-book-collection id="collection" pattern="{{pattern}}" books="{{books}}"></debonair-book-collection>
+			<debonair-book-collection id="collection" pattern="{{filteredTitle}}" books="{{books}}"></debonair-book-collection>
 		</section>
 	</template>
 </dom-module>
@@ -49,16 +49,12 @@
 			books: Array,
 			params: {
 				type: String,
-				computed: 'computeParams(filteredGenres, filteredTitle, filteredAuthor, filteredStatus)',
+				computed: 'computeParams(filteredGenres, filteredTitle, filteredStatus)',
 				observer: 'paramsChanged'
 			}
 		},
 		paramsChanged: function()
 		{
-			if(this.filteredTitle.length !== 3)
-			{
-				return;
-			}
 			this.$.ajax.generateRequest();
 		},
 		loadBooks: function(data)
@@ -76,23 +72,20 @@
 			});
 			console.log(this.books);
 		},
-		computeParams: function(genres, title, author, status)
+		computeParams: function(genres, title, status)
 		{
-			return JSON.stringify({
+			return {
 				title: title,
 				genres: genres.join('+'),
-				author: author,
 				status: status
-			});
+			};
 		},
 		ready: function()
 		{
-			setTimeout(function(){
-				this.filteredTitle = 'Nar';
-				this.filteredGenres = ['school'];
-				this.filteredStatus = 'ongoing';
-				this.filteredAuthor = 'kishi';
-			}.bind(this), 3000);
+				this.filteredTitle = 'sou';
+				this.filteredGenres = [];
+				this.filteredStatus = 'complete';
+				this.filteredAuthor = '';
 		}
 	});
 </script>
