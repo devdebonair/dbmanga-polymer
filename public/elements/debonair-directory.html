@@ -45,7 +45,6 @@
 			filteredTitle: String,
 			filteredStatus: String,
 			filteredAuthor: String,
-			pattern: String,
 			books: Array,
 			params: {
 				type: String,
@@ -55,6 +54,10 @@
 		},
 		paramsChanged: function()
 		{
+			if(this.filteredTitle.length !== 3)
+			{
+				return;
+			}
 			this.$.ajax.generateRequest();
 		},
 		loadBooks: function(data)
@@ -82,10 +85,11 @@
 		},
 		ready: function()
 		{
-				this.filteredTitle = 'sou';
-				this.filteredGenres = [];
-				this.filteredStatus = 'complete';
-				this.filteredAuthor = '';
+			this.$.ajax.generateRequest();
+			this.filteredTitle = '';
+			this.filteredGenres = [];
+			this.filteredStatus = '';
+			this.filteredAuthor = '';
 		}
 	});
 </script>

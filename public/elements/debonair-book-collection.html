@@ -34,8 +34,13 @@
 			'_filterTitle(pattern)',
 			'_filterGenres(genres)',
 			'_filterAuthor(author)',
-			'_filterStatus(status)'
+			'_filterStatus(status)',
+			'_booksChanged(books)'
 		],
+		_booksChanged: function(books)
+		{
+			this._filterTitle();
+		},
 		_filterTitle: function(pattern)
 		{
 			if(pattern.length === 0)
