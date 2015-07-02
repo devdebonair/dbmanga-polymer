@@ -21,7 +21,7 @@
 			<debonair-search-toolbar pattern="{{pattern}}"></debonair-search-toolbar>
 		</section>
 		<section id="book_view">
-			<debonair-book-collection pattern="{{pattern}}"></debonair-book-collection>
+			<debonair-book-collection id="collection" pattern="{{pattern}}"></debonair-book-collection>
 		</section>
 	</template>
 </dom-module>
@@ -34,7 +34,9 @@
 		},
 		ready: function()
 		{
-			
+			setTimeout(function(){
+				this.$.collection.genres = ['school'];
+			}.bind(this), 3000);	
 		}
 	});
 </script>

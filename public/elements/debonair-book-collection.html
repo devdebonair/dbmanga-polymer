@@ -599,18 +599,38 @@
 				type: String,
 				value: '',
 				observer: '_patternChanged'
+			},
+			genres: {
+				type: Array,
+				value: [],
+				observer: '_genresChanged'
 			}
 		},
 		_patternChanged: function(new_pattern)
 		{
 			this._filterTitle(new_pattern);
 		},
+		_genresChanged: function(new_genres)
+		{
+			this._filterGenres(new_genres);
+		},
 		_filterTitle: function(pattern)
 		{
+			if(pattern.length === 0)
+			{
+				return;
+			}
+
 			var books = Polymer.dom(this.root).querySelectorAll('.book');
 			var regex = new RegExp(pattern, "i");
 			for(var i = 0; i < books.length; i++)
 			{
+
+				if(books[i].parentNode.style.display === 'none')
+				{
+					continue;
+				}
+
 				// test title
 				if(!regex.test(books[i].title))
 				{
@@ -618,6 +638,35 @@
 					continue;
 				}
 				books[i].parentNode.style.display = "block";
+			}
+		},
+		_filterGenres: function(genres)
+		{
+			if(genres.length === 0)
+			{
+				return;
+			}
+
+			var books = Polymer.dom(this.root).querySelectorAll('.book');
+			for(var i = 0; i < books.length; i++)
+			{
+				if(books[i].parentNode.style.display === 'none')
+				{
+					continue;
+				}
+
+				// check if all filtered genres are listed within book
+				var isMatch = genres.every(function(element, index, array){
+					console.log(books[i].title);
+					return (books[i].genres.indexOf(element) !== -1);
+				});
+
+				if(!isMatch)
+				{
+					books[i].style.display = 'none';
+					continue;
+				}
+				books[i].parentNode.style.display = 'block';
 			}
 		},
 		displayAll: function()
