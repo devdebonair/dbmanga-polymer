@@ -656,9 +656,9 @@
 				}
 
 				// check if all filtered genres are listed within book
-				var isMatch = genres.every(function(element, index, array){
-					console.log(books[i].title);
-					return (books[i].genres.indexOf(element) !== -1);
+				var book_index = i;
+				var isMatch = genres.every(function(element){
+					return (books[book_index].genres.indexOf(element) !== -1);
 				});
 
 				if(!isMatch)
