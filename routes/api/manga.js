@@ -48,12 +48,12 @@ module.exports = function(router)
                 status = status.split(" ");
             }
             
-            Manga.find({ title: { $regex: title }, genres: { $all: genres }, status: { $in: status }, numOfChapters: { $gt: min, $lt: max } }, 'title coverUrl artist description genres numOfChapters status', { sort: { 'views.currentWeek': -1 } }, function(err, data){
+            Manga.find({ title: { $regex: title }, genres: { $all: genres }, status: { $in: status }, numOfChapters: { $gt: min, $lt: max } }, 'title coverUrl author description genres numOfChapters status', { sort: { 'views.currentWeek': -1 } }, function(err, data){
                 if(err)
                 {
                     return res.status(404).json(err);
                 }
-                return res.status(200).json(manga);
+                return res.status(200).json(data);
             });
         });
 
