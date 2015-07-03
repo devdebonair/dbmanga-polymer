@@ -27,19 +27,34 @@
 			pattern: String,
 			genres: Array,
 			author: String,
-			status: String,
-			books: Array
+			status: String
 		},
 		observers: [
 			'_filterTitle(pattern)',
 			'_filterGenres(genres)',
 			'_filterAuthor(author)',
-			'_filterStatus(status)',
-			'_booksChanged(books)'
+			'_filterStatus(status)'
 		],
-		_booksChanged: function(books)
+		addBooks: function(books)
 		{
-			this._filterTitle();
+			if(this.books.length === 0)
+			{
+				this.set('books', books);
+			}
+			for(var i = 0; i < books.length; i++)
+			{
+				for(var j = 0; j < this.books.length; j++)
+				{
+					if(this.books[j].cover === books[i].cover)
+					{
+						break;
+					}
+					else if(j === this.books.length-1)
+					{
+						this.push('books', books[i]);
+					}
+				}
+			}
 		},
 		_filterTitle: function(pattern)
 		{
@@ -162,6 +177,7 @@
 		ready: function()
 		{
 			this.width = 150;
+			this.books =[];
 		}
 	});
 </script>

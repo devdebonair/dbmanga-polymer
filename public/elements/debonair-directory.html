@@ -32,7 +32,7 @@
 			<debonair-search-toolbar pattern="{{filteredTitle}}"></debonair-search-toolbar>
 		</section>
 		<section id="book_view">
-			<debonair-book-collection id="collection" pattern="{{filteredTitle}}" books="{{books}}"></debonair-book-collection>
+			<debonair-book-collection id="collection" pattern="{{filteredTitle}}"></debonair-book-collection>
 		</section>
 	</template>
 </dom-module>
@@ -54,6 +54,11 @@
 		},
 		paramsChanged: function()
 		{
+			if(this.filteredTitle.length === 0)
+			{
+				this.$.collection.displayAll();
+			}
+
 			if(this.filteredTitle.length !== 3)
 			{
 				return;
@@ -63,7 +68,7 @@
 		loadBooks: function(data)
 		{
 			var response = data.detail.response;
-			this.books = response.map(function(element){
+			var response_books = response.map(function(element){
 				return {
 					title: element.title,
 					author: element.author,
@@ -73,7 +78,7 @@
 					status: element.status
 				};
 			});
-			console.log(this.books);
+			this.$.collection.addBooks(response_books);
 		},
 		computeParams: function(genres, title, status)
 		{
