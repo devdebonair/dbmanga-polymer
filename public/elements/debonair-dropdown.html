@@ -1,0 +1,91 @@
+<link rel="import" type="text/html" href="/lib/paper-item/paper-item.html">
+<link rel="import" type="text/html" href="/lib/paper-menu/paper-menu.html">
+<link rel="import" type="text/html" href="/lib/iron-icons/hardware-icons.html">
+<link rel="import" type="text/html" href="/lib/iron-icon/iron-icon.html">
+<link rel="import" type="text/html" href="/lib/paper-menu/paper-menu.html">
+<link rel="import" type="text/html" href="/lib/paper-item/paper-item.html">
+
+<dom-module id="debonair-dropdown">
+	<style>
+		:host {
+			color: #9A8194;
+			font-weight: 200;
+		}
+
+		paper-item {
+			color: #9A8194;
+		}
+
+		paper-item:hover {
+			color: #e1b1e1;
+			background-color: #340228;
+			cursor: pointer;
+		}
+
+		.title {
+			cursor: pointer;
+		}
+
+		.title:focus {
+			outline: none;
+		}
+
+		paper-menu {
+			position: absolute;
+		}
+	</style>
+	<template>
+		<span id="title" tabindex="-1" class="title" on-tap="toggle"><span>{{title}}</span> <iron-icon icon="hardware:keyboard-arrow-down"></iron-icon></span>
+		<paper-menu id="menu" on-tap="_fireSelected">
+			<template is="dom-repeat" items="{{menu_items}}">
+				<paper-item>{{item}}</paper-item>
+			</template>
+		</paper-menu>
+	</template>
+</dom-module>
+
+<script type="text/javascript">
+	Polymer({
+		is: "debonair-dropdown",
+		properties: {
+			dropped: Boolean,
+			menu_items: Array,
+			title: String
+		},
+		observers: [
+			'droppedChanged(dropped)'
+		],
+		droppedChanged: function(value)
+		{
+			if(value)
+			{
+				this.$.menu.style.display = 'block';
+				return;
+			}
+			this.$.menu.style.display = 'none';
+		},
+		toggle: function()
+		{
+			this.dropped = !this.dropped;
+		},
+		close: function()
+		{
+			this.dropped = false;
+		},
+		open: function()
+		{
+			this.dropped = true;
+		},
+		ready: function()
+		{
+			this.dropped = false;
+			this.$.title.addEventListener('blur', this.close.bind(this));
+			this.menu_items = ['shounen', 'adventure', 'mature'];
+			this.title = 'GENRE';
+		},
+		_fireSelected: function()
+		{
+			this.fire('select', this.$.menu.focusedItem());
+		}
+	});
+</script>
