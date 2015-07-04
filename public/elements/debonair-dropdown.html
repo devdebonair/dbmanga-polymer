@@ -10,6 +10,8 @@
 		:host {
 			color: #9A8194;
 			font-weight: 200;
+			outline: none;
+			cursor: pointer;
 		}
 
 		paper-item {
@@ -19,15 +21,6 @@
 		paper-item:hover {
 			color: #e1b1e1;
 			background-color: #340228;
-			cursor: pointer;
-		}
-
-		.title {
-			cursor: pointer;
-		}
-
-		.title:focus {
-			outline: none;
 		}
 
 		paper-menu {
@@ -35,10 +28,10 @@
 		}
 	</style>
 	<template>
-		<span id="title" tabindex="-1" class="title" on-tap="toggle"><span>{{title}}</span> <iron-icon icon="hardware:keyboard-arrow-down"></iron-icon></span>
-		<paper-menu id="menu" on-tap="_fireSelected">
-			<template is="dom-repeat" items="{{menu_items}}">
-				<paper-item>{{item}}</paper-item>
+		<span id="title" class="title" on-tap="toggle"><span>{{title}}</span> <iron-icon icon="hardware:keyboard-arrow-down"></iron-icon></span>
+		<paper-menu id="menu">
+			<template is="dom-repeat" items="{{items}}">
+				<paper-item on-tap="_fireSelected">{{item}}</paper-item>
 			</template>
 		</paper-menu>
 	</template>
@@ -49,7 +42,7 @@
 		is: "debonair-dropdown",
 		properties: {
 			dropped: Boolean,
-			menu_items: Array,
+			items: Array,
 			title: String
 		},
 		observers: [
@@ -79,13 +72,16 @@
 		ready: function()
 		{
 			this.dropped = false;
-			this.$.title.addEventListener('blur', this.close.bind(this));
-			this.menu_items = ['shounen', 'adventure', 'mature'];
-			this.title = 'GENRE';
+			Polymer.dom(this).setAttribute('tabindex', '-1');
+			this.addEventListener('blur', function(e){
+				setTimeout(function(){
+					this.close();
+				}.bind(this), 10);
+			}.bind(this));
 		},
-		_fireSelected: function()
+		_fireSelected: function(e)
 		{
-			this.fire('select', this.$.menu.focusedItem());
+			this.fire('select', {item: e.model.item, type: this.title});
 		}
 	});
 </script>
