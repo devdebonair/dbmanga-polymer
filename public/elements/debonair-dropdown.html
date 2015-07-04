@@ -72,11 +72,27 @@
 		ready: function()
 		{
 			this.dropped = false;
+			this.isOver = false;
 			Polymer.dom(this).setAttribute('tabindex', '-1');
+
+			this.addEventListener('mouseover', function(e){
+				this.isOver = true;
+				console.log(this.isOver);
+			}.bind(this));
+
+			this.addEventListener('mouseleave', function(e){
+				this.isOver = false;
+			}.bind(this));
+
+			// temporary fix
 			this.addEventListener('blur', function(e){
-				setTimeout(function(){
+				console.log(this.isOver);
+				if(!this.isOver)
+				{
+					console.log('closing');
 					this.close();
-				}.bind(this), 10);
+				}
+				this.focus();
 			}.bind(this));
 		},
 		_fireSelected: function(e)
