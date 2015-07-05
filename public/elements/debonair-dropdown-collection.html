@@ -41,7 +41,7 @@
 				</div>
 			</template>
 		</section>
-		<section class="horizontal layout chips">
+		<section class="horizontal flex layout chips">
 			<template is="dom-repeat" items="{{selectedFilters}}" as="chip">
 				<div class="filter_chip">
 					<span>{{chip.item}}<span><span class="chip_close" on-tap="handleChipClose">x</span>
@@ -62,7 +62,7 @@
 		handleChipClose: function(e)
 		{
 			this.removeChip(e.model.chip);
-			// this.addFilter(e.model.chip);
+			this.addFilter(e.model.chip);
 		},
 		addFilter: function(chip)
 		{
@@ -92,7 +92,14 @@
 		},
 		removeChip: function(chip)
 		{
-			this.splice('selectedFilters', this.selectedFilters.indexOf(chip.item));
+			for(var i = 0; i < this.selectedFilters.length; i++)
+			{
+				if(this.selectedFilters[i].item === chip.item)
+				{
+					this.splice('selectedFilters', i, 1);
+					return;
+				}
+			}
 		},
 		ready: function()
 		{

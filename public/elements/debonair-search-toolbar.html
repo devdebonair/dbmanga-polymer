@@ -4,7 +4,7 @@
 <link rel="import" type="text/html" href="/lib/paper-menu/paper-menu.html">
 <link rel="import" type="text/html" href="/lib/paper-item/paper-item.html">
 <link rel="import" type="text/html" href="/lib/iron-input/iron-input.html">
-<link rel="import" type="text/html" href="/lib/iron-dropdown/iron-dropdown.html">
+<link rel="import" type="text/html" href="/elements/debonair-dropdown-collection.html">
 
 <dom-module id="debonair-search-toolbar">
 	<style>
@@ -68,51 +68,9 @@
 					<input class="autocomplete" is="iron-input" bind-value="{{pattern}}" type="search" placeholder="Search...">
 				</div>
 				<paper-toolbar>
-					<div class="filter_item">
-						<iron-dropdown>
-							<span class="filter_title dropdown-trigger">GENRE <iron-icon icon="hardware:keyboard-arrow-down"></iron-icon></span>
-							<div class="dropdown-content">
-								<paper-menu>
-								 	<paper-item>Shounen</paper-item>
-								 	<paper-item>Adventure</paper-item>
-								 	<paper-item>Slice of Life</paper-item>
-								 	<paper-item>Harem</paper-item>
-								 	<paper-item>Shoujo</paper-item>
-								 	<paper-item>Romance</paper-item>
-								 	<paper-item>Seinen</paper-item>
-								 	<paper-item>Ecchi</paper-item>
-								 	<paper-item>Mature</paper-item>
-								</paper-menu>
-							</div>
-						</iron-dropdown>
-					</div>
-					<div class="filter_item">
-						<iron-dropdown>
-							<span class="filter_title dropdown-trigger">CHAPTERS <iron-icon icon="hardware:keyboard-arrow-down"></iron-icon></span>
-							<div class="dropdown-content">
-								<paper-menu>
-								 	<paper-item>0 - 50</paper-item>
-								 	<paper-item>50 - 100</paper-item>
-								 	<paper-item>100 - 150</paper-item>
-								 	<paper-item>150 - 200</paper-item>
-								 	<paper-item>200 - 250</paper-item>
-								 	<paper-item>250 - 300</paper-item>
-								 	<paper-item>300 - Up</paper-item>
-								</paper-menu>
-							</div>
-						</iron-dropdown>
-					</div>
-					<div class="filter_item">
-						<iron-dropdown>
-							<span class="filter_title dropdown-trigger">STATUS <iron-icon icon="hardware:keyboard-arrow-down"></iron-icon></span>
-							<div class="dropdown-content">
-								<paper-menu>
-								 	<paper-item>Ongoing</paper-item>
-								 	<paper-item>Complete</paper-item>
-								</paper-menu>
-							</div>
-						</iron-dropdown>
-					</div>
+					<section class="flex">
+						<debonair-dropdown-collection></debonair-dropdown-collection>
+					</section>
 				</paper-toolbar>
 			</section>
 			<hr class="light-pink-border">
