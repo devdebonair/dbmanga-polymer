@@ -65,11 +65,16 @@
 		<section class="wrapper flex">
 			<section class="content">
 				<div class="autocomplete_wrapper">
-					<input class="autocomplete" is="iron-input" bind-value="{{pattern}}" type="search" placeholder="Search...">
+					<input 
+						class="autocomplete" 
+						is="iron-input" 
+						bind-value="{{pattern}}" 
+						type="search" 
+						placeholder="Search...">
 				</div>
 				<paper-toolbar>
 					<section class="flex">
-						<debonair-dropdown-collection></debonair-dropdown-collection>
+						<debonair-dropdown-collection menus="{{menus}}" on-chips="chipsChanged"></debonair-dropdown-collection>
 					</section>
 				</paper-toolbar>
 			</section>
@@ -86,11 +91,18 @@
 				type: String,
 				value: '',
 				notify: true
+			},
+			menus: {
+				type: Array,
+				value: []
 			}
 		},
 		ready: function()
 		{
-
+		},
+		chipsChanged: function(e)
+		{
+			this.fire('chips', {data: e.detail.data});
 		}
 	});
 </script>

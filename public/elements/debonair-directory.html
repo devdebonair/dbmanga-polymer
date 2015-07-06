@@ -5,7 +5,7 @@
 <dom-module id="debonair-directory">
 	<style>
 		#book_view {
-			padding: 180px 30px 0px 60px;
+			padding: 180px 0px 0px 0px;
 			background-color: #fff;
 		}
 
@@ -29,10 +29,20 @@
 		</iron-ajax>
 
 		<section id="tool_bar" class="flex">
-			<debonair-search-toolbar pattern="{{filteredTitle}}"></debonair-search-toolbar>
+
+			<debonair-search-toolbar 
+				pattern="{{filteredTitle}}" 
+				menus="{{menus}}"
+				on-chips="swag">
+			</debonair-search-toolbar>
+
 		</section>
 		<section id="book_view">
-			<debonair-book-collection id="collection" pattern="{{filteredTitle}}"></debonair-book-collection>
+			<debonair-book-collection 
+				id="collection" 
+				pattern="{{filteredTitle}}" 
+				genres="{{filteredGenres}}">
+			</debonair-book-collection>
 		</section>
 	</template>
 </dom-module>
@@ -58,7 +68,6 @@
 			{
 				this.$.collection.displayAll();
 			}
-
 			if(this.filteredTitle.length !== 3)
 			{
 				return;
@@ -88,6 +97,18 @@
 				status: status
 			};
 		},
+		swag: function(e)
+		{
+			console.log('we got the juice');
+			var selectedFilters = e.detail.data;
+			var genres = selectedFilters.filter(function(element){
+				return element.type.toLowerCase() === 'genre';
+			});
+			genres = genres.map(function(element){
+				return element.item.toLowerCase();
+			});
+			this.set('filteredGenres', genres);
+		},
 		ready: function()
 		{
 			this.$.ajax.generateRequest();
@@ -95,6 +116,42 @@
 			this.filteredGenres = [];
 			this.filteredStatus = '';
 			this.filteredAuthor = '';
+
+			this.menus = [
+				{
+					type: "GENRE",
+					items: [
+						"Shounen",
+						"Adventure",
+						"Slice of Life",
+						"Harem",
+						"Shoujo",
+						"Romance",
+						"Seinen",
+						"Ecchi",
+						"Mature"
+					]
+				},
+				{
+					type: "CHAPTERS",
+					items: [
+						"0 - 50",
+						"50 - 100",
+						"100 - 150",
+						"150 - 200",
+						"200 - 250",
+						"250 - 300",
+						"300 - Up"
+					]
+				},
+				{
+					type: "STATUS",
+					items: [
+						"Ongoing",
+						"Complete"
+					]
+				}
+			];
 		}
 	});
 </script>
